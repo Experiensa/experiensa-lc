@@ -9,10 +9,6 @@ const webpackConfig = {
   entry: {
       admin: './assets/scripts/admin.js',
       main: './assets/scripts/main.js',
-      /*catalog: path.resolve(__dirname,'assets/scripts/modules/catalog/index.jsx'),
-      extracatalog: path.resolve(__dirname,'assets/scripts/modules/extracatalog/index.jsx'),
-      showcase: path.resolve(__dirname,'assets/scripts/modules/showcase/index.jsx'),
-      request: path.resolve(__dirname,'assets/scripts/modules/request/index.jsx'),*/
       common: [
         'jquery'
       ]
@@ -20,7 +16,7 @@ const webpackConfig = {
   output: {
     path: path.resolve(__dirname,'dist'),
     filename: '[name].bundle.js',
-    publicPath: 'dist/'
+    publicPath: 'wp-content/plugins/experiensa-lc/dist/'
   }, 
   module: {
     rules: [
