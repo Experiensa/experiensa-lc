@@ -1,8 +1,8 @@
 import React from 'react';
 import VoyagePrice from './VoyagePrice'
 import imageUrl from '../../../../../images/travel-no-image.jpg'
-const travelNoImage = experiensa_vars.dist_url + imageUrl
-
+// const travelNoImage = experiensa_vars.dist_url + imageUrl
+// console.log('****', travelNoImage);
 export default class VoyageImage extends React.Component {
     constructor(){
         super()
@@ -21,12 +21,12 @@ export default class VoyageImage extends React.Component {
                     imgSrc = imageGallery[0]
                     voyageImage = <img src={imgSrc}/>
                 }else{
-                    imgSrc = travelNoImage
+                    imgSrc = imageUrl
                     voyageImage = <img src={imgSrc}/>
                 }
             }
         }else{
-            imgSrc = travelNoImage
+            imgSrc = imageUrl
             voyageImage = <img src={imgSrc}/>
         }
 

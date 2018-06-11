@@ -1,9 +1,9 @@
 import React from 'react'
 import { Button, Header, Image, Modal, Icon, Grid, Menu, Segment, Container } from 'semantic-ui-react'
 import Slider from 'react-slick'
-import imageUrl from '../../../../../../images/travel-no-image.jpg'
+// import imageUrl from '../../../../../../images/travel-no-image.jpg'
 import { getVoyageImage } from '../../common/Info'
-const travelNoImage = experiensa_vars.dist_url + imageUrl
+// const travelNoImage = experiensa_vars.dist_url + '/vendor/travel-no-image.jpg';
 
 export default class DetailsModal extends React.Component {
     constructor(){

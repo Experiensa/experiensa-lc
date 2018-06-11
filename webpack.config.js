@@ -3,7 +3,9 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
+const env = process.env.NODE_ENV;
+const EXPERIENSA_ROOT = process.cwd();
+const EXPERIENSA_ASSETS = EXPERIENSA_ROOT + '/assets';
 const webpackConfig = {
   mode: 'production',
   entry: {
@@ -16,7 +18,9 @@ const webpackConfig = {
   output: {
     path: path.resolve(__dirname,'dist'),
     filename: '[name].bundle.js',
-    publicPath: 'wp-content/plugins/experiensa-lc/dist/'
+    //publicPath: '/'
+    //publicPath: 'dist/'
+    publicPath: env === 'production'?'/wp-content/plugins/experiensa-lc/dist/':'http://localhost/experiensa/wp-content/plugins/experiensa-lc/dist/'
   }, 
   module: {
     rules: [
@@ -28,7 +32,7 @@ const webpackConfig = {
             loader: 'babel-loader',
             options: {
               presets: ['react'],
-              plugins: ['transform-class-properties']
+              plugins: ['syntax-dynamic-import','transform-class-properties']
             }
           }
         ]
@@ -49,6 +53,34 @@ const webpackConfig = {
           'sass-loader?sourceMap'
         ]
       },
+      /*
+      {
+        test: /\.(png|jpg)$/,
+        use:[
+            {
+                loader: 'url-loader',
+                options: {
+                    limit: 100000
+                }
+            }
+        ]
+      },
+      {
+          test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
+          include: path.resolve(EXPERIENSA_ASSETS),
+          loader: 'file-loader',
+          options: {
+              name: `vendor/[name].[ext]`,
+          },
+      },
+      {
+          test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
+          include: /node_modules|bower_components/,
+          loader: 'file-loader',
+          options: {
+              name: `vendor/[name].[ext]`,
+          },
+      },*/
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [

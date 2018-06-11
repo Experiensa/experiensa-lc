@@ -4,7 +4,8 @@
   "description": "=== Plugin Name ===\r Contributors: (this should be a list of wordpress.org userid's)\r Donate link: http://example.com/\r Tags: comments, spam\r Requires at least: 3.0.1\r Tested up to: 3.4\r Stable tag: 4.3\r License: GPLv2 or later\r License URI: http://www.gnu.org/licenses/gpl-2.0.html",
   "main": "paths.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +24,7 @@
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-react": "^6.24.1",

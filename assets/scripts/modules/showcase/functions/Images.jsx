@@ -1,5 +1,5 @@
-import imageUrl from '../../../../images/travel-no-image.jpg'
-// const travelNoImage = experiensa_vars.dist_url + 'vendor/travel-no-image.jpg'
+import imageUrl from '../../../../images/travel-no-image.jpg';
+// const travelNoImage = experiensa_vars.dist_url + '/vendor/travel-no-image.jpg';
 
 export function getImageURL(data){
     if(data.hasOwnProperty('cover_image')){
@@ -7,7 +7,7 @@ export function getImageURL(data){
             return data.cover_image.feature_image
         }
     }
-    return imageUrl
+    return imageUrl;
 }
 export function getImageUrlList(data){
     return data.map((info)=>{

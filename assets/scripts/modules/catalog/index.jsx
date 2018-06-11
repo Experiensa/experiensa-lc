@@ -1,11 +1,13 @@
-import 'babel-polyfill';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 require('es6-symbol/implement');
-
+/*if (!global._babelPolyfill && !window._babelPolyfill) { 
+    import 'babel-polyfill';
+}*/
 import 'semantic-ui-css/semantic.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

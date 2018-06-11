@@ -2,13 +2,16 @@ import React from 'react'
 import { Button, Header, Image, Modal, Icon, Grid, Menu, Segment } from 'semantic-ui-react'
 import withImportantStyle from 'react-with-important-style';
 import DetailModalContent from './DetailModalContent'
-import imageUrl from '../../../../../../images/travel-no-image.jpg'
+import imageUrl from '../../../../../../images/travel-no-image.jpg';
+//import path from 'path';
 var CardImage = withImportantStyle('img');
-// const travelNoImage = experiensa_vars.dist_url + 'vendor/travel-no-image.jpg'
-//  console.log('experiensa_vars.dist_url',experiensa_vars.dist_url);
-//  console.log('imageUrl',imageUrl);
-//  console.log('travelNoImage', travelNoImage);
-// console.log('travelNoImage',travelNoImage);
+/*
+const travelNoImage = experiensa_vars.plugin_url + imageUrl;
+console.log('experiensa_vars',experiensa_vars);
+console.log('experiensa_vars.plugin_url',experiensa_vars.plugin_url);
+console.log('travelNoImage', travelNoImage);
+console.log('imageUrl',imageUrl);
+*/
 export default class DetailsModal extends React.Component {
     constructor(){
         super()

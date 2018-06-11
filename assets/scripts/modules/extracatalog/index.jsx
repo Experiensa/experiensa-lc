@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -10,6 +10,9 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Main from './components';
 import reducers from './reducers';
+/*if (!global._babelPolyfill && !window._babelPolyfill) { 
+    import 'babel-polyfill';
+}*/
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 export default function renderExtraCatalog() {

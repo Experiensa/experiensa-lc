@@ -24,8 +24,9 @@ final class Asset{
         $localized_array = array(
             'ajaxurl'=>admin_url('admin-ajax.php', $protocol),
             'siteurl'=>get_bloginfo('url'),
+            'plugin_url' => EXPERIENSA_LC_URL,
             'assets_url' => EXPERIENSA_LC_ASSETS_URL,
-            'dist_url'=>EXPERIENSA_LC_DIST,
+            'dist_url'=>EXPERIENSA_LC_DIST_URL,
             'agency_email' => $agency_email,
             'google_api_key' => Settings::getGoogleAPIKey(),
             'currency' => Settings::getCurrency(),
@@ -61,8 +62,9 @@ final class Asset{
         $localized_array = array(
             'ajaxurl'=>admin_url('admin-ajax.php', $protocol),
             'siteurl'=>get_bloginfo('url'),
+            'plugin_url' => EXPERIENSA_LC_URL,
             'assets_url' => EXPERIENSA_LC_ASSETS_URL,
-            'dist_url'=>EXPERIENSA_LC_DIST,
+            'dist_url'=>EXPERIENSA_LC_DIST_URL,
             'agency_email' => $agency_email,
             'google_api_key' => Settings::getGoogleAPIKey(),
             'currency' => Settings::getCurrency(),
