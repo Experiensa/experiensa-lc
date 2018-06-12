@@ -14,7 +14,7 @@ class Index extends React.Component {
     this.props.requestCatalog(this.props.filters)
   }
   render() {
-    console.log('mis props son', this.props)    
+    // console.log('mis props son', this.props);
     const { catalog, categories, includes, excludes, themes, destinations, countries, options, filters } = this.props
     const { elements } = options
     const values = {

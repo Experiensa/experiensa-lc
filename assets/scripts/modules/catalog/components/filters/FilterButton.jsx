@@ -1,8 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 //https://github.com/facebook/react/issues/1881
 import withImportantStyle from 'react-with-important-style';
-import {filterCatalog} from '../../actions'
+import {filterCatalog} from '../../actions';
 import { Button } from 'semantic-ui-react'
 var SingleButton = withImportantStyle('button');
 

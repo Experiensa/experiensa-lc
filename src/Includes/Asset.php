@@ -33,6 +33,7 @@ final class Asset{
             'recaptcha_site_key' => $recaptchaData['site_key'],
             'recaptcha_secret_key' => $recaptchaData['secret_key']
         );
+        wp_enqueue_style('experiensa-css',EXPERIENSA_LC_URL . 'dist/main.style.css', []);
         wp_enqueue_style('experiensa-css',EXPERIENSA_LC_URL . 'assets/styles/style.css', []);
         wp_enqueue_style('slick-css',EXPERIENSA_LC_URL . 'assets/styles/slick/slick.css', []);
         wp_enqueue_style('slick-theme',EXPERIENSA_LC_URL . 'assets/styles/slick/slick-theme.css', []);
@@ -71,6 +72,7 @@ final class Asset{
             'recaptcha_site_key' => $recaptchaData['site_key'],
             'recaptcha_secret_key' => $recaptchaData['secret_key']
         );
+        wp_enqueue_style('experiensa-css',EXPERIENSA_LC_URL . 'dist/main.style.css', []);
         wp_enqueue_script('experiensa/common_js', EXPERIENSA_LC_URL . 'dist/common.bundle.js');
         wp_enqueue_script('experiensa/main_js', EXPERIENSA_LC_URL . 'dist/main.bundle.js');
         wp_localize_script('experiensa/main_js', 'experiensa_vars', $localized_array);

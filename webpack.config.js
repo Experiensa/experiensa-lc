@@ -3,9 +3,11 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const env = process.env.NODE_ENV;
 const EXPERIENSA_ROOT = process.cwd();
 const EXPERIENSA_ASSETS = EXPERIENSA_ROOT + '/assets';
+const devMode = env !== 'production'
 const webpackConfig = {
   mode: 'production',
   entry: {
@@ -31,8 +33,9 @@ const webpackConfig = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['react'],
-              plugins: ['syntax-dynamic-import','transform-class-properties']
+              babelrc: false,
+              presets: ['es2015', 'react', 'stage-2'],
+              plugins: ['transform-decorators-legacy']
             }
           }
         ]
@@ -40,7 +43,7 @@ const webpackConfig = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader'
         ]
       },
@@ -134,6 +137,12 @@ const webpackConfig = {
       new CleanWebpackPlugin(['dist']),
       new UglifyJSPlugin({
         sourceMap: true
+      }),
+      new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: '[name].style.css',
+        chunkFilename: '[id].style.css',
       }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')

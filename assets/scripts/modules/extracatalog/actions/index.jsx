@@ -216,7 +216,9 @@ export function filterCatalog(filterType, value, active, extra_values = []){
                 prices: price_values,
                 input: input_text
             }
-            console.log('voy a buscar con estos datos:', originalCatalog, myFilters)
+            console.log('voy a buscar con estos datos:');
+            console.log('originalCatalog', originalCatalog);
+            console.log('myFilters', myFilters);
             newCatalog = searchCatalog(originalCatalog, myFilters)
             
         }
