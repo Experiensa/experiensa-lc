@@ -28,7 +28,6 @@ class Index extends React.Component {
     return(
       <Grid stackable columns={2} divided>
         <Grid.Column width={4}>
-          <SearchContainer/>
           <FiltersContainer filters={filters} values={values}/>
         </Grid.Column>
         <Grid.Column width={12}>
