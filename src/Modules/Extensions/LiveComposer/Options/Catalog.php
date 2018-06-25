@@ -35,6 +35,10 @@ class Catalog
                     'value' => 'title',
                 ),
                 array(
+                    'label' => __( 'Excerpt', 'experiensa' ),
+                    'value' => 'excerpt',
+                ),
+                array(
                     'label' => __( 'Price', 'experiensa' ),
                     'value' => 'price',
                 ),

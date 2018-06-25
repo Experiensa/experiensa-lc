@@ -33,16 +33,16 @@ export default class DetailsModal extends React.Component {
         this.setState({ activeItem: name })
     }
     createButtonAction(){
-        if(this.props.options.price != "Non disponible"){
+        /*if(this.props.options.price != "Non disponible"){
             return(
                 <div className="content">
                     <Button id="modal-card-details" className="catalog-detail-button" onClick={this.handleOpen} fluid>{this.props.price}</Button>
                 </div>
             );
-        }
+        }*/
         return(
             <div className="content">
-                <Button id="modal-card-details" className="catalog-detail-button" onClick={this.handleOpen} fluid>Details</Button>
+                <Button id="modal-card-details" className="catalog-detail-button" onClick={this.handleOpen} fluid>Détails</Button>
             </div>
         );
     }

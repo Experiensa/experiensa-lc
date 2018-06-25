@@ -5,16 +5,23 @@ export default class DataRow extends React.Component {
         super()
     }
     render(){
-        if(this.props.show){
-            if(this.props.isTitle  && this.props.title){
+        const {show, isTitle, title, value} = this.props;
+        const priceStyle = {
+            textAlign: 'center',
+            fontSize : 'large'
+        };
+        //console.log('props DataRow', this.props);
+        if(show){
+            if(isTitle && title){
                 return(
-                    <div className="header voyage-title">{this.props.title}</div>
+                    <div className="header voyage-title">{title}</div>
                 )
             }else{
-                if( this.props.value) {
+                if(value) {
                     return (
-                        <div className="voyage-content">
-                            <strong>{this.props.title}: </strong>{this.props.value}
+                        <div className="voyage-content" style={title==='Prix'?priceStyle:{}}>
+                            <strong>{title}: </strong>
+                            <div dangerouslySetInnerHTML={{__html:value}}/>
                         </div>
                     )
                 }else{
