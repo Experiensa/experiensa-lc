@@ -69,6 +69,10 @@ class Catalog
                 array(
                     'label' => __( 'Excludes', 'experiensa' ),
                     'value' => 'excludes',
+                ),
+                array(
+                    'label' => __( 'Flyer', 'experiensa' ),
+                    'value' => 'flyer',
                 )
             ),
             'section' => 'styling',
