@@ -9,9 +9,10 @@ export default class VoyageCards extends React.Component {
         super()
     }
     renderDetailButton(price){
-        if(this.props.show.detail_button){
+        const {voyage, options, show} = this.props;
+        if(show.detail_button){
             return(
-                <DetailsModal voyage={this.props.voyage} price={price} options={this.props.options} type="button"/>
+                <DetailsModal voyage={voyage} price={price} options={options} type="button"/>
             )
         }else{
             return(
