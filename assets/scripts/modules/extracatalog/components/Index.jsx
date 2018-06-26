@@ -15,8 +15,8 @@ class Index extends React.Component {
   }
   render() {
     console.log('mis props son', this.props);
-    const { catalog, categories, includes, excludes, themes, destinations, countries, options, filters } = this.props
-    const { elements } = options
+    const { catalog, categories, includes, excludes, themes, destinations, countries, options, filters } = this.props;
+    const { elements } = options;
     const values = {
       categories,
       includes,
@@ -24,7 +24,7 @@ class Index extends React.Component {
       themes,
       destinations,
       countries
-    }
+    };
     return(
       <Grid stackable columns={2} divided>
         <Grid.Column width={4}>

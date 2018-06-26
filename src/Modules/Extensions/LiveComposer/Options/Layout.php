@@ -79,13 +79,9 @@ class Layout
             'section' => 'styling',
         );
     }
-    public static function post_per_row($label = 'Post per row', $default = '4', $id = 'post_per_row'){
-        return array(
-            'label'   => __($label, 'experiensa'),
-            'id'      => $id,
-            'std'     => $default,
-            'type'    => 'select',
-            'choices' => array(
+    public static function post_per_row($label = 'Post per row', $default = '4', $id = 'post_per_row', $post_numb = []){
+        if(empty($post_numb)){
+            $post_numb = array(
                 array(
                     'label' => '1',
                     'value' => '1'
@@ -103,7 +99,14 @@ class Layout
                     'label' => '4',
                     'value' => '4'
                 ),
-            ),
+            );
+        }
+        return array(
+            'label'   => __($label, 'experiensa'),
+            'id'      => $id,
+            'std'     => $default,
+            'type'    => 'select',
+            'choices' => $post_numb,
             'section' => 'styling',
         );
     }

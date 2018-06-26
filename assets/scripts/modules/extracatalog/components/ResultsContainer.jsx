@@ -32,8 +32,9 @@ class ResultsContainer extends React.Component {
     })
   }
   render() {
+    const { options } = this.props;
     return(
-      <Card.Group className="stackable" itemsPerRow={4}>
+      <Card.Group className="stackable" itemsPerRow={parseInt(options.post_per_row)}>
         {this.renderVoyageCards()}
       </Card.Group>
     )

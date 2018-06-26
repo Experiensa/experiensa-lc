@@ -21,6 +21,7 @@ if ( defined( 'DS_LIVE_COMPOSER_URL' ) && !class_exists('ExtraCatalog_LC_Module'
             Layout::header('Header','','catalog_header_opt'),
             //Layout
             CatalogOpt::type(),
+            Layout::post_per_row('Post per row','4','post_per_row',[['label'=>'2','value'=>'2'],['label'=>'3','value'=>'3'],['label'=>'4','value'=>'4'],['label'=>'6','value'=>'6']]),
             //Items to show
             CatalogOpt::elements(),
             //Filters to show
@@ -168,6 +169,7 @@ if ( defined( 'DS_LIVE_COMPOSER_URL' ) && !class_exists('ExtraCatalog_LC_Module'
     }
     // Module Output
     function output( $options ) {
+        $post_per_row = $options['post_per_row'];
         $type = $options['type'];
         $elements = explode(' ',$options['elements']);
         $filters = $options['filters'];
@@ -188,6 +190,7 @@ if ( defined( 'DS_LIVE_COMPOSER_URL' ) && !class_exists('ExtraCatalog_LC_Module'
         $catalog_options = [
             'type' => $type,
             'elements' => $elements,
+            'post_per_row' => $post_per_row,
             'content_border_radius' => $voyage_border_radius
         ];
 
