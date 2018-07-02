@@ -1,27 +1,37 @@
-import React from 'react'
+import React from 'react';
 
 export default class DataRow extends React.Component {
     constructor(){
         super()
     }
     render(){
-        const {show, isTitle, title, value} = this.props;
+        const {show, isTitle, title, value, showTitle, strongContent} = this.props;
         const priceStyle = {
+            position: 'absolute',
+            bottom: '0',
+            left: '50%',
             textAlign: 'center',
-            fontSize : 'large'
+            fontSize : 'large',
+            marginRight: '-50%',
+            transform: 'translate(-50%,-50%)'
         };
         //console.log('props DataRow', this.props);
         if(show){
             if(isTitle && title){
                 return(
                     <div className="header voyage-title">{title}</div>
-                )
+                );
             }else{
                 if(value) {
                     return (
                         <div className="voyage-content" style={title==='Prix'?priceStyle:{}}>
-                            <strong>{title}: </strong>
-                            <div dangerouslySetInnerHTML={{__html:value}}/>
+                            {showTitle && <strong>{title}: </strong>}
+                            {strongContent? (
+                                <strong dangerouslySetInnerHTML={{__html:value}}/>
+                            ):(
+                                <div dangerouslySetInnerHTML={{__html:value}}/>
+                            )}
+                            
                         </div>
                     )
                 }else{
