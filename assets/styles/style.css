@@ -32,3 +32,6 @@ https://github.com/Semantic-Org/Semantic-UI-React/issues/2558
 .rc-slider-mark-text{
   font-size: x-small;
 }
+.ui.page.modals.dimmer.transition.visible.active{
+  z-index: 900000;
+}

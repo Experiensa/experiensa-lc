@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux'
-import { requestPosts } from './showcase'
+import { combineReducers } from 'redux';
+import requestPosts from './showcase';
 
 const rootReducer = combineReducers({
-    posts: requestPosts
-})
+	posts: requestPosts,
+});
 
-export default rootReducer
+export default rootReducer;

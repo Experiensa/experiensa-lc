@@ -11,32 +11,31 @@ import camelCase from './camelCase';
 // The routing fires all common scripts, followed by the page specific scripts.
 // Add additional events for more control over timing e.g. a finalize event
 export default class Router {
-    constructor(routes) {
-        this.routes = routes;
-    }
+	constructor(routes) {
+		this.routes = routes;
+	}
 
-    fire(route, fn = 'init', args) {
-        const fire = route !== '' && this.routes[route] && typeof this.routes[route][fn] === 'function';
-        if (fire) {
-            this.routes[route][fn](args);
-        }
-    }
+	fire(route, fn = 'init', args) {
+		const fire = route !== '' && this.routes[route] && typeof this.routes[route][fn] === 'function';
+		if (fire) {
+			this.routes[route][fn](args);
+		}
+	}
 
-    loadEvents() {
-        // Fire common init JS
-        this.fire('common');
-
-        // Fire page-specific init JS, and then finalize JS
-        document.body.className
-            .toLowerCase()
-            .replace(/-/g, '_')
-            .split(/\s+/)
-            .map(camelCase)
-            .forEach((className) => {
-                this.fire(className);
-                this.fire(className, 'finalize');
-            });
-        // Fire common finalize JS
-        this.fire('common', 'finalize');
-    }
+	loadEvents() {
+		// Fire common init JS
+		this.fire('common');
+		// Fire page-specific init JS, and then finalize JS
+		document.body.className
+			.toLowerCase()
+			.replace(/-/g, '_')
+			.split(/\s+/)
+			.map(camelCase)
+			.forEach((className) => {
+				this.fire(className);
+				this.fire(className, 'finalize');
+			});
+		// Fire common finalize JS
+		this.fire('common', 'finalize');
+	}
 }

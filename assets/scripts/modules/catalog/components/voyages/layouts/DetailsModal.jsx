@@ -1,9 +1,8 @@
-import React from 'react'
-import { Button, Header, Image, Modal, Icon, Grid, Menu, Segment } from 'semantic-ui-react'
+import React from 'react';
+import { Button, Image, Modal, Icon, Menu } from 'semantic-ui-react';
 import withImportantStyle from 'react-with-important-style';
-import DetailModalContent from './DetailModalContent'
+import DetailModalContent from './DetailModalContent';
 import imageUrl from '../../../../../../images/travel-no-image.jpg';
-//import path from 'path';
 var CardImage = withImportantStyle('img');
 /*
 const travelNoImage = experiensa_vars.plugin_url + imageUrl;
@@ -30,7 +29,7 @@ export default class DetailsModal extends React.Component {
         modalOpen: false,
     })
     handleItemClick = (e, { name }) => {
-        this.setState({ activeItem: name })
+        this.setState({ activeItem: name });
     }
     createButtonAction(){
         /*if(this.props.options.price != "Non disponible"){
