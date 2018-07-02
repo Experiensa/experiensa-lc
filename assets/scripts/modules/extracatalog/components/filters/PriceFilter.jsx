@@ -45,6 +45,7 @@ class PriceFilter extends React.Component{
           index={keyVal}
           onClick={(e) => this.handleClick(e)}
         >
+          <Icon name='dropdown' />
           Prix
         </Accordion.Title>
         <Accordion.Content active={isActive}>
