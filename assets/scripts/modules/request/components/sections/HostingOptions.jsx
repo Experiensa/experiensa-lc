@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
-import {Field, reduxForm} from 'redux-form';
-import { Grid, Form, Checkbox, Rating, Icon } from 'semantic-ui-react';
+import {Field } from 'redux-form';
+import { Grid, Form, Rating } from 'semantic-ui-react';
 import CheckboxGroup from './CheckboxGroup';
 
 const hoptions = [
-  {value:'internet',label:'Internet'},
-  {value:'breakfast',label:'Breakfast'},
-  {value:'parking',label:'Parking'},
-  {value:'swiming pool',label:'Swiming Pool'},
-  {value:'laundry room',label:'Laundry Room'},
-  {value:'gym/fitness',label:'Gym/Fitness'},
-  {value:'space well-being',label:'Space Well-being'},
-  {value:'conference room',label:'Conference room'},
+	{ value: 'internet', label: 'Internet'},
+	{ value: 'breakfast', label: 'Breakfast'},
+	{ value: 'parking', label: 'Parking'},
+	{ value: 'swiming pool', label: 'Swiming Pool'},
+	{ value: 'laundry room', label: 'Laundry Room'},
+	{ value: 'gym/fitness', label: 'Gym/Fitness'},
+	{ value: 'space well-being', label: 'Space Well-being'},
+	{ value: 'conference room', label: 'Conference room'},
 ];
 
 const htypes = [
-  {value:'hotel',label:'Hotel'},
-  {value:'house/appartment',label:'House/Appartment'},
-  {value:'homestay',label:'Homestay'},
-  {value:'camping',label:'Camping'},
-  {value:'all inclusive',label:'All Inclusive'},
-  {value:'half-board',label:'Half-Board'}
+	{ value: 'hotel', label: 'Hotel' },
+	{ value: 'house/appartment', label: 'House/Appartment' },
+	{ value: 'homestay', label: 'Homestay' },
+	{ value: 'camping', label: 'Camping' },
+	{ value: 'all inclusive', label: 'All Inclusive' },
+	{ value: 'half-board', label: 'Half-Board' }
 ];
 
 export default class HostingOptions extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   handleRate = (e, { rating, maxRating }) => {
     this.props.stars.input.onChange(rating);
@@ -46,6 +46,6 @@ export default class HostingOptions extends Component {
           </Form.Group>
         </Grid.Column>
       </Grid>
-    )
+    );
   }
 }

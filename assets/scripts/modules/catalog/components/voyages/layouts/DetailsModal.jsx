@@ -17,13 +17,13 @@ export default class DetailsModal extends React.Component {
         this.state = {
             modalOpen: false,
             activeItem: 'information'
-        }
+        };
     }
     handleOpen = (e) => {
         this.setState({
             modalOpen: true,
-        })
-        e.preventDefault()
+        });
+        e.preventDefault();
     }
     handleClose = (e) => this.setState({
         modalOpen: false,
@@ -41,7 +41,14 @@ export default class DetailsModal extends React.Component {
         }*/
         return(
             <div className="content">
-                <Button id="modal-card-details" className="catalog-detail-button" onClick={this.handleOpen} fluid>Détails</Button>
+                <Button
+                    id="modal-card-details"
+                    className="catalog-detail-button"
+                    onClick={this.handleOpen}
+                    fluid
+                >
+                    Détails
+                </Button>
             </div>
         );
     }
@@ -49,29 +56,34 @@ export default class DetailsModal extends React.Component {
         const border = this.props.options.content_border_radius;
         // console.log('mi border es', border)
         if(border !== 'inherit'){
-            // console.log('voy por aqui')
             const imgStyle = {
                 borderTopLeftRadius: `${border}rem !important`,
                 borderTopRightRadius: `${border}rem !important`,
-            }
-            // console.log(imgStyle);
+            };
             return(                
-                <CardImage className="image catalog-image" src={voyageImage} onClick={this.handleOpen} style={imgStyle}/>
-            )
+                <CardImage
+                    className="image catalog-image"
+                    src={voyageImage}
+                    onClick={this.handleOpen}
+                    style={imgStyle}
+                />
+            );
         }else{
-            // console.log('voy por alla')
             return(
-                <Image className="image catalog-image" src={voyageImage} onClick={this.handleOpen}/>
-            )
+                <Image
+                    className="image catalog-image"
+                    src={voyageImage}
+                    onClick={this.handleOpen}
+                />
+            );
         }
     }
     render(){
-        const { activeItem } = this.state
-        let voyage = this.props.voyage
-        const encodedSubject = encodeURIComponent(voyage.title)
-        const mailto = 'mailto:'+experiensa_vars.agency_email+'?subject='+encodedSubject
+        const { activeItem } = this.state;
+        let voyage = this.props.voyage;
+        const encodedSubject = encodeURIComponent(voyage.title);
+        const mailto = 'mailto:'+experiensa_vars.agency_email+'?subject='+encodedSubject;
         // console.log('lo que voy a mostrar en el mailto es',mailto)
-
         let voyageImage = () => {
             const lostTravelImage = imageUrl
             // console.log(lostTravelImage)
@@ -96,16 +108,16 @@ export default class DetailsModal extends React.Component {
             return title
         }
 
-        let actionTrigger
+        let actionTrigger;
         if(this.props.type == 'button'){
-            actionTrigger = this.createButtonAction()
+            actionTrigger = this.createButtonAction();
         }else{
-            actionTrigger = this.createImage(voyageImage())
+            actionTrigger = this.createImage(voyageImage());
         }
         return(
             <Modal trigger={actionTrigger}
-                   open={this.state.modalOpen}
-                   onClose={this.handleClose}
+                open={this.state.modalOpen}
+                onClose={this.handleClose}
             >
                 <Modal.Header>
                     <h2>{voyage.title}</h2>

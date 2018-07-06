@@ -9,9 +9,9 @@ import singleExpPlace from './routes/singleExpPlace';
  * @type {Router} routes - An instance of our router
  */
 const routes = new Router({
-    /** All pages */
-    common,
-    singleExpPlace
+	/** All pages */
+	common,
+	singleExpPlace,
 });
 
 /** Load Events */
