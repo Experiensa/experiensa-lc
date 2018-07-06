@@ -41,3 +41,13 @@ function init_livecomposer_modules(){
     require_once EXPERIENSA_LC_ABS . '/src/Modules/Extensions/LiveComposer/live-composer-loader.php';
 }
 add_action('plugins_loaded', 'init_livecomposer_modules');
+
+function unregister_lc_cpt() {
+    $lc_cpt = ['dslc_galleries', 'dslc_partners', 'dslc_projects','dslc_staff','dslc_testimonials','dslc_downloads'];
+    foreach($lc_cpt as $cpt){
+        if(post_type_exists($cpt)){
+            unregister_post_type($cpt);
+        }
+    }
+}
+register_activation_hook( __FILE__, 'unregister_lc_cpt' );
