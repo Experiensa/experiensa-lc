@@ -1,20 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Grid, Image } from 'semantic-ui-react';
-import SearchContainer from './SearchContainer';
+import { Grid } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+//import SearchContainer from './SearchContainer';
 import FiltersContainer from './FiltersContainer';
 import ResultsContainer from './ResultsContainer';
-import {requestCatalog} from '../actions';
 
 class Index extends React.Component {
   constructor(){
-      super()
+    super()
   }
-  componentWillMount(){
-    this.props.requestCatalog(this.props.filters)
-  }
+
   render() {
-    console.log('mis props son', this.props);
+    console.log('Index mis props son', this.props);
     const { catalog, categories, includes, excludes, themes, destinations, countries, options, filters } = this.props;
     const { elements } = options;
     const values = {
@@ -28,6 +26,9 @@ class Index extends React.Component {
     return(
       <Grid stackable columns={2} divided>
         <Grid.Column width={4}>
+          <ul>
+            <li><Link to="/experiensa/voyage/22">Voy al viaje</Link></li>
+          </ul>
           <FiltersContainer filters={filters} values={values}/>
         </Grid.Column>
         <Grid.Column width={12}>
@@ -38,6 +39,7 @@ class Index extends React.Component {
   }
 }
 function mapStateToProps(state){
+  console.log('Index state es', state);
   const { catalog, categories, includes, excludes, themes, destinations, countries } = state.catalog
   return {
       catalog,
@@ -50,4 +52,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect( mapStateToProps, { requestCatalog } )( Index )
+export default connect( mapStateToProps )( Index );

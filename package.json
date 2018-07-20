@@ -6,7 +6,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "lint": "eslint assets/scripts/admin.js",
+    "lint": "eslint assets/scripts/modules/extracatalog/index.jsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -60,7 +60,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "connected-react-router": "^4.3.0",
     "es6-promise": "^4.2.4",
+    "history": "^4.7.2",
     "jquery": "^3.3.1",
     "moment": "^2.22.2",
     "prop-types": "^15.6.1",
@@ -72,7 +74,9 @@
     "react-google-recaptcha": "^0.11.1",
     "react-masonry-component": "^6.2.1",
     "react-redux": "^5.0.7",
-    "react-router": "^4.2.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
     "react-slick": "^0.23.1",
     "react-stack-grid": "^0.7.1",
     "react-window-size": "^1.2.0",
