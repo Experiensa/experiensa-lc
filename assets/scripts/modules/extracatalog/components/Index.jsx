@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import { Grid } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { Grid, Loader } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 //import SearchContainer from './SearchContainer';
 import FiltersContainer from './FiltersContainer';
@@ -23,19 +23,30 @@ class Index extends React.Component {
       destinations,
       countries
     };
-    return(
-      <Grid stackable columns={2} divided>
-        <Grid.Column width={4}>
-          <ul>
-            <li><Link to="/experiensa/voyage/22">Voy al viaje</Link></li>
-          </ul>
-          <FiltersContainer filters={filters} values={values}/>
-        </Grid.Column>
-        <Grid.Column width={12}>
-          <ResultsContainer voyages={catalog} elements={elements} options={options}/>
-        </Grid.Column>
-      </Grid>
-    )
+    if (catalog.constructor === Array && catalog.length > 0) {
+      return(
+        <Grid stackable columns={2} divided>
+          <Grid.Column width={4}>
+            <ul>
+              <li><Link to="/experiensa/voyage/22">Voy al viaje</Link></li>
+            </ul>
+            <FiltersContainer filters={filters} values={values}/>
+          </Grid.Column>
+          <Grid.Column width={12}>
+            <ResultsContainer voyages={catalog} elements={elements} options={options}/>
+          </Grid.Column>
+        </Grid>
+      );
+    }
+    return (
+			<div>
+				<Loader
+					active
+					inline='centered'
+					content='Loading'
+				/>
+			</div>
+		);
   }
 }
 function mapStateToProps(state){
