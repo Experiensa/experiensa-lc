@@ -23,12 +23,16 @@ class Index extends React.Component {
       destinations,
       countries
     };
+    let siteUrl = experiensa_vars.siteurl.replace('http://','')+'/';
+    const MainRoute = siteUrl.replace('localhost','');
+    const voyageUrl = MainRoute+'voyage/22';
+
     if (catalog.constructor === Array && catalog.length > 0) {
       return(
         <Grid stackable columns={2} divided>
           <Grid.Column width={4}>
             <ul>
-              <li><Link to="/experiensa/voyage/22">Voy al viaje</Link></li>
+              <li><Link to={voyageUrl}>Voy al viaje</Link></li>
             </ul>
             <FiltersContainer filters={filters} values={values}/>
           </Grid.Column>
