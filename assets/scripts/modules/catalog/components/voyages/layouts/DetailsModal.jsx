@@ -140,6 +140,6 @@ export default class DetailsModal extends React.Component {
                     </a>
                 </Modal.Actions>
             </Modal>
-        )
+        );
     }
 }

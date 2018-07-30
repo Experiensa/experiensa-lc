@@ -246,6 +246,5 @@ export function filterCatalog(filterType, value, active, extra_values = []){
                 payload: catalogResponse
             }
         )
-    }
-    
+    }    
 }

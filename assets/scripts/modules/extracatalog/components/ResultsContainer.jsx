@@ -28,7 +28,7 @@ class ResultsContainer extends React.Component {
     const { voyages, options } = this.props
     return voyages.map((voyage,i) => {
       return(
-        <VoyageCards voyage={voyage} key={i} options={options} show={this.elementsToShow()}/>
+        <VoyageCards voyage={voyage} key={i} options={options} show={this.elementsToShow()} dType='link'/>
       );
     })
   }

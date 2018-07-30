@@ -9,17 +9,17 @@ class MenuContent extends React.Component {
   
   render() {
     console.log('MenuContent',this.props);
-    const { context } = this.props;
+    const { context, voyage } = this.props;
     if(context === "information"){
       return(
         <div>
-          <InformationContent />
+          <InformationContent voyage={voyage} />
         </div>
       );
     }
     return(
       <div>
-        <IncludedExcludedContent />
+        <IncludedExcludedContent voyage={voyage} />
       </div>
     );
   }

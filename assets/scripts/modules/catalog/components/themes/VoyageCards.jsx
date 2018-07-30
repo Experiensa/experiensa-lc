@@ -1,9 +1,10 @@
 import React from 'react';
 import DataRow from '../common/DataRow';
 import DetailsModal from '../voyages/layouts/DetailsModal';
+import DetailsLink from '../voyages/layouts/DetailsLink';
 import * as Info from '../common/Info';
 
-export default class VoyageCards extends React.Component {
+class VoyageCards extends React.Component {
     constructor(){
         super();
     }
@@ -20,16 +21,26 @@ export default class VoyageCards extends React.Component {
         }
     }
     render() {
-        const {voyage, options, show} = this.props;
+        const {voyage, options, show, dType} = this.props;
         let priceComponent = '';
-        //console.log('props de VoyageCards', this.props);
+        console.log('props de VoyageCards', this.props);
         const price = Info.getVoyagePrice(voyage);
         if(price !== 'Non disponible'){
             priceComponent = <DataRow show={show.price} title="Prix" value={price} showTitle={false} strongContent={true} isTitle={false}/>;
         }
+        let button;
+        if(show.detail_button){
+            button = <DetailsModal voyage={voyage} price={price} options={options} type="button"/>;
+        }else{
+            button = <div></div>;
+        }
         return(
             <div className="ui card">
-                <DetailsModal voyage={voyage} price={price} options={options} type="image"/>
+                {dType=='link' ? (
+                  <DetailsLink voyage={voyage} price={price} options={options} type="image" vIndex={voyage.index} />  
+                ) : (
+                    <DetailsModal voyage={voyage} price={price} options={options} type="image" />
+                )}
                 <div className="content">
                     <DataRow show={show.title} title={voyage.title} value="" showTitle={true} strongContent={false} isTitle={true}/>
                     <DataRow show={show.excerpt} title="Extrait" value={voyage.excerpt} strongContent={false} showTitle={true} isTitle={false}/>
@@ -41,8 +52,16 @@ export default class VoyageCards extends React.Component {
                     <DataRow show={show.excludes} title="Exclut" value={voyage.excluded.text} showTitle={true} strongContent={false} isTitle={false}/>
                     {priceComponent}
                 </div>
-                {this.renderDetailButton(price)}
+                {dType=='link' && show.detail_button ? (
+                    <DetailsLink voyage={voyage} price={price} options={options} type="button" vIndex={voyage.index} />
+                  ) : (
+                    button
+                  )}
             </div>
         )
     }
 }
+VoyageCards.defaultProps = {
+    dType: ''
+}
+export default VoyageCards;

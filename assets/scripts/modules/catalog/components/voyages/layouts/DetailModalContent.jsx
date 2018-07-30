@@ -10,7 +10,7 @@ export default class DetailsModal extends React.Component {
         super()
     }
     renderInformation(){
-        let voyage = this.props.data
+        let voyage = this.props.data;
         // console.log('DetailsModal', voyage)
         let price = () =>{
             let value = ""
