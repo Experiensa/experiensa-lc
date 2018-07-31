@@ -4,7 +4,9 @@ import Index from './components';
 import Voyage from '../voyage/Index';
 
 let siteUrl = experiensa_vars.siteurl.replace('http://','')+'/extra-catalogue/';
-const MainRoute = siteUrl.replace('localhost','');
+siteUrl = siteUrl.replace('localhost','');
+siteUrl = siteUrl.replace('indalo.experiensa.com','');
+const MainRoute = siteUrl;
 const voyageUrl = MainRoute+'voyage/:id';
 console.log('MainRoute',MainRoute);
 console.log('voyageUrl',voyageUrl);

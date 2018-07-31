@@ -5,7 +5,9 @@ import { Menu, Button } from 'semantic-ui-react';
 import MenuContent from './components/MenuContent';
 
 let siteUrl = experiensa_vars.siteurl.replace('http://','')+'/extra-catalogue/';
-    const MainRoute = siteUrl.replace('localhost','');
+siteUrl = siteUrl.replace('localhost','');
+siteUrl = siteUrl.replace('indalo.experiensa.com','');
+const MainRoute = siteUrl;
 
 class Index extends React.Component {
   constructor(){

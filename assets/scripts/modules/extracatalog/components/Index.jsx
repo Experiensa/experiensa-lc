@@ -24,7 +24,9 @@ class Index extends React.Component {
       countries
     };
     let siteUrl = experiensa_vars.siteurl.replace('http://','')+'/extra-catalogue/';
-    const MainRoute = siteUrl.replace('localhost','');
+    siteUrl = siteUrl.replace('localhost','');
+    siteUrl = siteUrl.replace('indalo.experiensa.com','');
+    const MainRoute = siteUrl;
     const voyageUrl = MainRoute+'voyage/22';
 
     if (catalog.constructor === Array && catalog.length > 0) {

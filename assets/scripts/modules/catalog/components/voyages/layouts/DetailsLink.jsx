@@ -51,7 +51,9 @@ class DetailsLink extends React.Component {
   render(){
     const { type, vIndex, voyage } = this.props;
     let siteUrl = experiensa_vars.siteurl.replace('http://','')+'/extra-catalogue/';
-    const MainRoute = siteUrl.replace('localhost','');
+    siteUrl = siteUrl.replace('localhost','');
+    siteUrl = siteUrl.replace('indalo.experiensa.com','');
+    const MainRoute = siteUrl;
     const voyageUrl = MainRoute+'voyage/'+ vIndex;
     let voyageImage = () => {
       const lostTravelImage = imageUrl;
