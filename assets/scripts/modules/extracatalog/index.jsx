@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 import 'semantic-ui-css/semantic.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import 'tachyons/css/tachyons.css';
+//import 'tachyons/css/tachyons.css';
 
 require('es6-symbol/implement');
 
