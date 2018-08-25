@@ -31,6 +31,10 @@ class DetailContent extends React.Component {
     const { voyage } = this.props;
     return (voyage.theme.text?"<b>Thème</b>: " + voyage.theme.text+"<br/>":"")
   }
+  flyer = () => {
+    const { voyage } = this.props;
+    return (voyage.flyer_file?"<b>Prospectus</b>: <a href='" + voyage.flyer_file+"' target='_blank'>Télécharger</a><br/>":"")
+  }
   render(){
     return(
       <div>
@@ -39,6 +43,7 @@ class DetailContent extends React.Component {
         <div dangerouslySetInnerHTML={{__html: this.country()}}/>
         <div dangerouslySetInnerHTML={{__html: this.destination()}}/>
         <div dangerouslySetInnerHTML={{__html: this.theme()}}/>
+        <div dangerouslySetInnerHTML={{__html: this.flyer()}}/>
       </div>
     )
   }
