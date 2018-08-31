@@ -1,13 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const env = process.env.NODE_ENV;
 const EXPERIENSA_ROOT = process.cwd();
 const EXPERIENSA_ASSETS = EXPERIENSA_ROOT + '/assets';
-const devMode = env !== 'production'
+const devMode = env !== 'production';
 const webpackConfig = {
   mode: 'production',
   entry: {
@@ -18,11 +15,11 @@ const webpackConfig = {
       ]
   },
   output: {
-    path: path.resolve(__dirname,'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    //publicPath: '/'
-    //publicPath: 'dist/'
-    publicPath: env === 'production'?'/wp-content/plugins/experiensa-lc/dist/':'http://localhost/experiensa/wp-content/plugins/experiensa-lc/dist/'
+    // publicPath: '/'
+    // publicPath: 'dist/'
+    publicPath: env === 'production' ? '/wp-content/plugins/experiensa-lc/dist/' : 'http://localhost/experiensa/wp-content/plugins/experiensa-lc/dist/',
   }, 
   module: {
     rules: [
@@ -35,7 +32,7 @@ const webpackConfig = {
             options: {
               babelrc: false,
               presets: ['es2015', 'react', 'stage-2'],
-              plugins: ['transform-decorators-legacy']
+              plugins: ['transform-decorators-legacy'],
             }
           },/*
           {
@@ -56,7 +53,7 @@ const webpackConfig = {
           'style-loader',
           'css-loader',
           'resolve-url-loader',
-          'sass-loader?sourceMap'
+          'sass-loader?sourceMap',
         ]
       },
       /*
@@ -101,7 +98,7 @@ const webpackConfig = {
             options: {
               mozjpeg: {
                 progressive: true,
-                quality: 65
+                quality: 65,
               },
               // optipng.enabled: false will disable optipng
               optipng: {
@@ -109,14 +106,14 @@ const webpackConfig = {
               },
               pngquant: {
                 quality: '65-90',
-                speed: 4
+                speed: 4,
               },
               gifsicle: {
                 interlaced: false,
               },
               // the webp option will enable WEBP
               webp: {
-                quality: 75
+                quality: 75,
               }
             }
           }
@@ -128,7 +125,7 @@ const webpackConfig = {
           {
             loader: 'file-loader',
             options: {
-              name: 'fonts/[name].[hash].[ext]'
+              name: 'fonts/[name].[hash].[ext]',
             }
           }
         ]
@@ -136,7 +133,7 @@ const webpackConfig = {
     ]
   },
   devtool: 'source-map',
-  'plugins': [
+  plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -145,15 +142,15 @@ const webpackConfig = {
       chunkFilename: '[id].style.css',
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    })
+      'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
   ],
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
-  devServer: {
+	devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
   }
 };
 

@@ -26,7 +26,7 @@ define('EXPERIENSA_LC_DIST_URL', plugin_dir_url(__FILE__) . 'dist/');
 define('EXPERIENSA_LC_MAIN_API_URL', get_bloginfo('url') . '/wp-json/wp/v2');
 define('EXPERIENSA_LC_DIR_NAME', dirname(plugin_basename(__FILE__)));  
 // var_dump(EXPERIENSA_LC_URL);
-function init_experiensa_lc(){    
+function init_experiensa_lc(){
     //Include the custom autoloader
     require_once EXPERIENSA_LC_ABS . '/autoloader.php';
     new Experiensa_LC\Plugin\Includes\Requires();

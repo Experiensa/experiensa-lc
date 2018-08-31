@@ -10,6 +10,7 @@ export default {
 		renderCatalog();
 		renderExtraCatalog();
 		renderRequest();
+		module.hot.accept();
 	},
 	finalize() {
 		// JavaScript to be fired on all pages, after page specific JS is fired

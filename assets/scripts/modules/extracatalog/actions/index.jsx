@@ -104,23 +104,23 @@ function createCatalogObject(data, type = REQUEST_CATALOG, user_filters = []){
   let response = {}
   switch (type){
       case REQUEST_CATALOG:
-          response = {
-              catalog: data.catalog,
-              originalCatalog: data.catalog,
-              user_filters,
-              themes: data.theme_filter,
-              themes_active: [],
-              destinations: data.destination_filter,
-              destinations_active:[],
-              countries: data.country_filter,
-              countries_active:[],
-              categories: data.category_filter,
-              categories_active: [],
-              includes: data.included_filter,
-              includes_active: [],
-              excludes: data.excluded_filter,
-              excludes_active: [],
-          }
+        response = {
+            catalog: data.catalog,
+            originalCatalog: data.catalog,
+            user_filters,
+            themes: data.theme_filter,
+            themes_active: [],
+            destinations: data.destination_filter,
+            destinations_active:[],
+            countries: data.country_filter,
+            countries_active:[],
+            categories: data.category_filter,
+            categories_active: [],
+            includes: data.included_filter,
+            includes_active: [],
+            excludes: data.excluded_filter,
+            excludes_active: [],
+        }
   }
   return response
 }
