@@ -23,7 +23,7 @@ class VoyageCards extends React.Component {
     render() {
         const {voyage, options, show, dType} = this.props;
         let priceComponent = '';
-        console.log('props de VoyageCards', this.props);
+        //console.log('props de VoyageCards', this.props);
         const price = Info.getVoyagePrice(voyage);
         if(price !== 'Non disponible'){
             priceComponent = <DataRow show={show.price} title="Prix" value={price} showTitle={false} strongContent={true} isTitle={false}/>;

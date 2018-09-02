@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {requestCatalog} from '../actions';
+import { requestCatalog } from '../actions';
 import Routes from '../routes';
 
 class MainContainer extends React.Component {

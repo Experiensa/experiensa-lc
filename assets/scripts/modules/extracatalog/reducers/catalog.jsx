@@ -1,4 +1,4 @@
-import { REQUEST_CATALOG, FILTER_CATALOG } from '../actions';
+import { REQUEST_CATALOG, FILTER_CATALOG, EDIT_LOAD_MORE } from '../actions';
 
 export const initialState = {
 	catalog: [],
@@ -18,6 +18,7 @@ export const initialState = {
 	excludes_active: [],
 	price_values: [],
 	input_text: '',
+	show_load_more: true,
 };
 
 const catalogReducer = (state = initialState, action) => {
@@ -25,6 +26,8 @@ const catalogReducer = (state = initialState, action) => {
 		case REQUEST_CATALOG:
 			return Object.assign({},state,action.payload);
 		case FILTER_CATALOG:
+			return Object.assign({}, state, action.payload);
+		case EDIT_LOAD_MORE:
 			return Object.assign({}, state, action.payload);
 		default:
 			return state;

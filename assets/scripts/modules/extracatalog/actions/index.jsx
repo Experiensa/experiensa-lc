@@ -13,6 +13,7 @@ export const FILTER_INCLUDED = 'FILTER_INCLUDED';
 export const FILTER_EXCLUDED = 'FILTER_EXCLUDED';
 export const FILTER_PRICE = 'FILTER_PRICE';
 export const FILTER_INPUT = 'FILTER_INPUT';
+export const EDIT_LOAD_MORE = 'EDIT_LOAD_MORE';
 
 /**
  * Helper functions
@@ -147,6 +148,51 @@ export function requestCatalog(user_filters) {
   }
 }
 
+export function initLoadMore(post_per_row) {
+    return(dispatch,getState)=>{
+        const original_state = getState().catalog
+        let {
+            catalog, 
+            originalCatalog,
+            user_filters, 
+            categories_active, 
+            countries_active, 
+            excludes_active, 
+            includes_active, 
+            destinations_active, 
+            themes_active, 
+            input_text,
+            price_values,
+        } = original_state;
+        let show = false;
+        let posts_to_show = (post_per_row * 3);
+        if(posts_to_show < catalog.length){
+            show = true;
+        }
+        const catalogResponse = {
+            catalog,
+            originalCatalog,
+            user_filters,
+            categories_active, 
+            countries_active, 
+            excludes_active, 
+            includes_active, 
+            destinations_active, 
+            themes_active, 
+            input_text,
+            price_values,
+            show_load_more: show,
+        }
+        console.log('voy en showLoadMore', posts_to_show, show);
+        dispatch(
+            {
+                type: EDIT_LOAD_MORE,
+                payload: catalogResponse
+            }
+        );
+    }
+  }
+
 export function filterCatalog(filterType, value, active, extra_values = []){
     // console.log('recibi', filterType, value, active)
     return(dispatch,getState)=>{
@@ -163,7 +209,8 @@ export function filterCatalog(filterType, value, active, extra_values = []){
             destinations_active, 
             themes_active, 
             input_text,
-            price_values
+            price_values,
+            show_load_more
         } = original_state
         console.log('original', original_state)
         switch (filterType){
@@ -193,7 +240,7 @@ export function filterCatalog(filterType, value, active, extra_values = []){
                 break
             
         }
-        let newCatalog
+        let newCatalog;
         if( categories_active.length < 1
             && countries_active.length < 1
             && excludes_active.length < 1
@@ -203,7 +250,7 @@ export function filterCatalog(filterType, value, active, extra_values = []){
             && price_values.length < 1
             && input_text.length < 1
         ){
-            newCatalog =  originalCatalog
+            newCatalog =  originalCatalog;
         }else{
             const myFilters = {
                 user_filters,
@@ -214,12 +261,12 @@ export function filterCatalog(filterType, value, active, extra_values = []){
                 destinations: destinations_active,
                 themes: themes_active,
                 prices: price_values,
-                input: input_text
+                input: input_text,
             }
             console.log('voy a buscar con estos datos:');
             console.log('originalCatalog', originalCatalog);
             console.log('myFilters', myFilters);
-            newCatalog = searchCatalog(originalCatalog, myFilters)
+            newCatalog = searchCatalog(originalCatalog, myFilters);
             
         }
         const catalogResponse = {
@@ -238,7 +285,8 @@ export function filterCatalog(filterType, value, active, extra_values = []){
             includes_active,
             excludes: original_state.excludes,
             excludes_active,
-            input_text
+            input_text,
+            show_load_more,
         }
         dispatch(
             {

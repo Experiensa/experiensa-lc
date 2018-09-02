@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Loader } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 //import SearchContainer from './SearchContainer';
 import FiltersContainer from './FiltersContainer';
 import ResultsContainer from './ResultsContainer';
+import LoadMoreContainer from './LoadMoreContainer';
 
 class Index extends React.Component {
   constructor(){
@@ -23,12 +24,6 @@ class Index extends React.Component {
       destinations,
       countries
     };
-    let siteUrl = experiensa_vars.siteurl.replace('http://','')+'/extra-catalogue/';
-    siteUrl = siteUrl.replace('localhost','');
-    siteUrl = siteUrl.replace('indalo.experiensa.com','');
-    const MainRoute = siteUrl;
-    const voyageUrl = MainRoute+'voyage/22';
-
     if (catalog.constructor === Array && catalog.length > 0) {
       return(
         <Grid stackable columns={2} divided>
@@ -37,6 +32,7 @@ class Index extends React.Component {
           </Grid.Column>
           <Grid.Column width={12}>
             <ResultsContainer voyages={catalog} elements={elements} options={options}/>
+            <LoadMoreContainer post_per_row={options.post_per_row} />
           </Grid.Column>
         </Grid>
       );
