@@ -25,11 +25,14 @@ class ResultsContainer extends React.Component {
     });
   }  
   renderVoyageCards(){
-    const { voyages, options } = this.props
+    const { voyages, options } = this.props;
     return voyages.map((voyage,i) => {
-      return(
-        <VoyageCards voyage={voyage} key={i} options={options} show={this.elementsToShow()} dType='link'/>
-      );
+      //console.log('mi viaje en renderVoyageCards es', voyage);
+      if(voyage.show){
+        return(
+          <VoyageCards voyage={voyage} key={i} options={options} show={this.elementsToShow()} dType='link'/>
+        );
+      }
     })
   }
   render() {

@@ -9,7 +9,8 @@ class MainContainer extends React.Component {
   }
 
   componentWillMount(){
-    this.props.requestCatalog(this.props.filters)
+    const { post_per_row } = this.props.options;
+    this.props.requestCatalog(this.props.filters, post_per_row);    
   }
 
   render(){

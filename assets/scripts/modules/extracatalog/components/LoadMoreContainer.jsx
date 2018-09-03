@@ -5,15 +5,16 @@ import { initLoadMore } from '../actions';
 
 class LoadMoreContainer extends React.Component {
   constructor(){
-    super()
+    super();
   }
   componentWillMount(){
     const { post_per_row } = this.props;
-    this.props.initLoadMore(post_per_row);
+    this.props.initLoadMore(post_per_row, true);
   }
-  handleOpen = (e) => {
+  handleClick = (e) => {
     const { post_per_row } = this.props;
     console.log('voy a cargar mas viajes');
+    this.props.initLoadMore(post_per_row, false);
     e.preventDefault();
 }
   render() {
@@ -28,9 +29,10 @@ class LoadMoreContainer extends React.Component {
       <Button
         fluid
         size='huge'
-        onClick={this.handleOpen}
+        onClick={this.handleClick}
+        style={{marginTop: '10px'}}
       >
-        Load More
+        Charger plus
       </Button>
     );
   }

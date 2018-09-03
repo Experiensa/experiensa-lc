@@ -45,18 +45,18 @@ function getFilteredCatalog(catalog = [], filters = [], object_name){
     return catalog
 }
 function filterByObject(catalog = [], filter = '', object_name){
-    let auxList = []
+    let auxList = [];
     if(filter.length > 0) {
-        filter = filter.toLocaleUpperCase()
+        filter = filter.toLocaleUpperCase();
         for(var i in catalog){
-            let object_value = catalog[i][object_name].toUpperCase()
+            let object_value = catalog[i][object_name].toUpperCase();
             if(object_value.indexOf(filter) > -1){
-                auxList.push(catalog[i])
+                auxList.push(catalog[i]);
             }
         }
-        return auxList
+        return auxList;
     }
-    return catalog
+    return catalog;
 }
 function filterByTextTaxonomy(catalog = [], filter = '', taxonomies = []){
     let auxList = []
@@ -70,7 +70,7 @@ function filterByTextTaxonomy(catalog = [], filter = '', taxonomies = []){
 }
 function filterByPriceObject(catalog = [], filter = []){
     let auxList = []
-    console.log('entro en filterByPriceObject', filter)
+    //console.log('entro en filterByPriceObject', filter);
     if(filter.length > 0) {
         let min = filter[0];
         let max = filter[1];
@@ -101,12 +101,35 @@ function searchCatalog(catalog, filters){
     }
     return auxCatalog
 }
-function createCatalogObject(data, type = REQUEST_CATALOG, user_filters = []){
-  let response = {}
+function countShowCatalog(catalog){
+	let tam = 0;
+	for(var i in catalog){
+		if(catalog[i]['show'] === true){
+			tam++;
+		}
+	}
+	return tam;
+}
+function editShowCatalog(showNumber, catalog){
+	let auxList = [];
+	if(catalog.length > 0) {
+		for(var i in catalog){
+			if(!catalog[i]['show'] && showNumber > 0){
+				catalog[i]['show'] = true;
+				showNumber--;
+			}
+			auxList.push(catalog[i]);
+		}
+	}
+	return auxList;
+}
+function createCatalogObject(data, type = REQUEST_CATALOG, user_filters = [], showNumber){
+  let response = {};
+  const customCatalog = editShowCatalog(showNumber, data.catalog);
   switch (type){
       case REQUEST_CATALOG:
         response = {
-            catalog: data.catalog,
+            catalog: customCatalog,
             originalCatalog: data.catalog,
             user_filters,
             themes: data.theme_filter,
@@ -125,15 +148,16 @@ function createCatalogObject(data, type = REQUEST_CATALOG, user_filters = []){
   }
   return response
 }
+
 /*
  * Action Creations
  */
-export function requestCatalog(user_filters) {
+export function requestCatalog(user_filters, showNumber) {
   return(dispatch,getState)=>{
       let localApiCatalogURL = experiensa_vars.siteurl + '/wp-json/wp/v2/catalog'
       axios.get(localApiCatalogURL, {timeout: 30000})
       .then((response)=>{
-          let catalogResponse = createCatalogObject(response.data, REQUEST_CATALOG, user_filters)
+          let catalogResponse = createCatalogObject(response.data, REQUEST_CATALOG, user_filters, showNumber * 3)
           console.log('catalogo formateado', catalogResponse)
           dispatch(
               {
@@ -148,50 +172,60 @@ export function requestCatalog(user_filters) {
   }
 }
 
-export function initLoadMore(post_per_row) {
-    return(dispatch,getState)=>{
-        const original_state = getState().catalog
-        let {
-            catalog, 
-            originalCatalog,
-            user_filters, 
-            categories_active, 
-            countries_active, 
-            excludes_active, 
-            includes_active, 
-            destinations_active, 
-            themes_active, 
-            input_text,
-            price_values,
-        } = original_state;
-        let show = false;
-        let posts_to_show = (post_per_row * 3);
-        if(posts_to_show < catalog.length){
-            show = true;
-        }
-        const catalogResponse = {
-            catalog,
-            originalCatalog,
-            user_filters,
-            categories_active, 
-            countries_active, 
-            excludes_active, 
-            includes_active, 
-            destinations_active, 
-            themes_active, 
-            input_text,
-            price_values,
-            show_load_more: show,
-        }
-        console.log('voy en showLoadMore', posts_to_show, show);
-        dispatch(
-            {
-                type: EDIT_LOAD_MORE,
-                payload: catalogResponse
-            }
-        );
-    }
-  }
+export function initLoadMore(post_per_row, init = true) {
+	return(dispatch,getState)=>{
+		const original_state = getState().catalog;
+		let {
+			catalog, 
+			originalCatalog,
+			user_filters, 
+			categories_active, 
+			countries_active, 
+			excludes_active, 
+			includes_active, 
+			destinations_active, 
+			themes_active, 
+			input_text,
+			price_values,
+		} = original_state;
+		let show = false;
+		if(init){
+			let posts_to_show = (post_per_row * 3);
+			if(posts_to_show < catalog.length){
+				show = true;
+			}	
+		}else{
+			let tam = catalog.length;
+			let show_number = countShowCatalog(catalog);
+			let diff = tam - show_number;
+			console.log('diff', diff);
+			if((diff - post_per_row) > 0){
+				show = true;
+			}
+			catalog = editShowCatalog(post_per_row, catalog);
+		}
+		const catalogResponse = {
+			catalog,
+			originalCatalog,
+			user_filters,
+			categories_active, 
+			countries_active, 
+			excludes_active, 
+			includes_active, 
+			destinations_active, 
+			themes_active, 
+			input_text,
+			price_values,
+			show_load_more: show,
+		}
+		dispatch(
+			{
+				type: EDIT_LOAD_MORE,
+				payload: catalogResponse
+			}
+		);
+	}
+}
 
 export function filterCatalog(filterType, value, active, extra_values = []){
     // console.log('recibi', filterType, value, active)
