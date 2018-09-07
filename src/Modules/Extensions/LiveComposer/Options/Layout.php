@@ -213,4 +213,20 @@ class Layout
             'increment' => 0.05,
         );
     }
+    public static function show_flyer_pdf($id = 'show_pdf_flyer', $label = 'Show PDF Flyer', $default = '', $tab = 'Content'){
+        return array(
+            'label' => $label,
+            'id' => $id,
+            'std' => $default,
+            'type' => 'checkbox',
+            'choices' => array(
+                array(
+                    'label' => 'Show',
+                    'value' => 'show'
+                )
+            ),
+            'section' => 'styling',
+            'tab' => __( $tab, 'experiensa' )
+        );
+    }
 }

@@ -24,6 +24,7 @@ class InformationContent extends React.Component {
     return imageSrc;
   }
   render() {
+    const { options } = this.props;
     const { content, title } = this.props.voyage;
     const imageSrc = this.voyageImage();
     return(
@@ -33,7 +34,7 @@ class InformationContent extends React.Component {
           <Grid.Column width={6}>
             <Image size='large' src={imageSrc} />
             <br />
-            <DetailContent voyage={this.props.voyage} />
+            <DetailContent voyage={this.props.voyage} options={options} />
           </Grid.Column>
           <Grid.Column width={10}>
             <p dangerouslySetInnerHTML={{__html: content}} />

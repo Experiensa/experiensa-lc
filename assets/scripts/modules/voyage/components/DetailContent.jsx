@@ -32,8 +32,8 @@ class DetailContent extends React.Component {
     return (voyage.theme.text?"<b>Thème</b>: " + voyage.theme.text+"<br/>":"")
   }
   flyer = () => {
-    const { voyage } = this.props;
-    return (voyage.flyer_file?"<b>Prospectus</b>: <a href='" + voyage.flyer_file+"' target='_blank'>Télécharger</a><br/>":"")
+    const { voyage, options } = this.props;
+    return (voyage.flyer_file && options.show_pdf_flyer==="show"?"<b>Prospectus</b>: <a href='" + voyage.flyer_file+"' target='_blank'>Télécharger</a><br/>":"")
   }
   render(){
     return(

@@ -30,8 +30,9 @@ class Index extends React.Component {
     this.setState({ activeItem: name });
   }
   render() {
+    console.log('props de VOyage', this.props);
     const { activeItem } = this.state;
-    const { match } = this.props;
+    const { match, options } = this.props;
     const myVoyage = this.searchItem(parseInt(match.params.id), this.props.catalog)
     return(
       <div>
@@ -48,7 +49,7 @@ class Index extends React.Component {
             </Link>
           </li>
         </ul>
-        <MenuContent context={activeItem} voyage={myVoyage} />        
+        <MenuContent context={activeItem} voyage={myVoyage} options={options} />        
       </div>
     );
   }

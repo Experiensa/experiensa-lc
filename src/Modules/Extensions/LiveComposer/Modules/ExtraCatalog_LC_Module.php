@@ -161,6 +161,25 @@ if ( defined( 'DS_LIVE_COMPOSER_URL' ) && !class_exists('ExtraCatalog_LC_Module'
                 'section' => 'styling',
                 'tab' => __( 'Content', 'experiensa' )
             ),
+            /**
+             * Detail Content - Content Tab
+             */
+            array(
+                'label' => __( 'Detail Content', 'experiensa' ),
+                'id' => 'css_detail_content_group',
+                'type' => 'group',
+                'action' => 'open',
+                'section' => 'styling',
+                'tab' => __( 'Content', 'experiensa' )
+            ),
+            Layout::show_flyer_pdf(),
+            array(
+                'id' => 'css_detail_content_group',
+                'type' => 'group',
+                'action' => 'close',
+                'section' => 'styling',
+                'tab' => __( 'Content', 'experiensa' )
+            ),
         );
 
             // Return the array
@@ -185,13 +204,20 @@ if ( defined( 'DS_LIVE_COMPOSER_URL' ) && !class_exists('ExtraCatalog_LC_Module'
         set_query_var('title_content',$title_content);
         $subtitle_content = $options['catalog_subtitle_content'];
         set_query_var('subtitle_content',$subtitle_content);
-
+        $show_pdf_flyer_opt = $options['show_pdf_flyer'];
+        if ( ! empty( $show_pdf_flyer_opt ) ){
+            $show_pdf_flyer_opt = explode( ' ', trim( $show_pdf_flyer_opt ) );
+            $show_pdf_flyer_opt = $show_pdf_flyer_opt[0];
+        }else{
+            $show_pdf_flyer_opt = "";
+        }
         $voyage_border_radius = $options['voyage_border_radius'];
         $catalog_options = [
             'type' => $type,
             'elements' => $elements,
             'post_per_row' => $post_per_row,
-            'content_border_radius' => $voyage_border_radius
+            'content_border_radius' => $voyage_border_radius,
+            'show_pdf_flyer' => $show_pdf_flyer_opt
         ];
 
         set_query_var('catalog_options',$catalog_options);
