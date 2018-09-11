@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Index from './components/Index';
 import Voyage from '../voyage/Index';
 
+console.log('siteURL',experiensa_vars.siteurl);
 let siteUrl = experiensa_vars.siteurl.replace('http://','')+'/extra-catalogue/';
 siteUrl = siteUrl.replace('localhost', '');
 siteUrl = siteUrl.replace('indalo.experiensa.com', '');

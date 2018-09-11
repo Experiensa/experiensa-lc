@@ -29,7 +29,7 @@ class ImageGallery extends React.Component {
   }
   imageBox = () => {
     const list = this.imageList();
-    if(list.length > 1){
+    /*if(list.length > 1){
       return(
         <Lightbox
           images={list}
@@ -37,7 +37,8 @@ class ImageGallery extends React.Component {
       );
     }else{
       return(<Image size='large' src={list[0]} />);
-    }
+    }*/
+    return(<Image size='large' src={list[0]} />);
   }
   render(){
     return(this.imageBox());
