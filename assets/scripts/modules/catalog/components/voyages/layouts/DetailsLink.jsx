@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Image, Modal, Icon, Menu } from 'semantic-ui-react';
 import imageUrl from '../../../../../../images/travel-no-image.jpg';
+import {getRoutes} from '../../../../../util/Url';
 import withImportantStyle from 'react-with-important-style';
 
 class DetailsLink extends React.Component {
@@ -50,11 +51,9 @@ class DetailsLink extends React.Component {
 }
   render(){
     const { type, vIndex, voyage } = this.props;
-    let siteUrl = experiensa_vars.siteurl.replace('http://','')+'/extra-catalogue/';
-    siteUrl = siteUrl.replace('localhost','');
-    siteUrl = siteUrl.replace('indalo.experiensa.com','');
-    const MainRoute = siteUrl;
-    const voyageUrl = MainRoute+'voyage/'+ vIndex;
+    const {customUrl} = getRoutes();
+    const voyageUrl = customUrl + vIndex;
+    
     let voyageImage = () => {
       const lostTravelImage = imageUrl;
       let image = voyage.cover_image;

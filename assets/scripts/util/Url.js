@@ -13,3 +13,11 @@ export function extractHostname(url) {
   hostname = hostname.split('?')[0];
   return hostname;
 }
+export function getRoutes(){
+  var pathname = window.location.pathname;
+  return({
+    mainRoute: pathname,
+    voyageUrl: pathname+'voyage/:id',
+    customUrl: pathname+'voyage/'
+  });
+}

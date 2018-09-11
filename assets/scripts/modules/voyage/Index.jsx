@@ -3,11 +3,9 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Menu, Button } from 'semantic-ui-react';
 import MenuContent from './components/MenuContent';
+import {getRoutes} from '../../util/Url';
 
-let siteUrl = experiensa_vars.siteurl.replace('http://','')+'/extra-catalogue/';
-siteUrl = siteUrl.replace('localhost','');
-siteUrl = siteUrl.replace('indalo.experiensa.com','');
-const MainRoute = siteUrl;
+const {mainRoute} = getRoutes();
 
 class Index extends React.Component {
   constructor(){
@@ -52,7 +50,7 @@ class Index extends React.Component {
         </Menu>
         <ul>
           <li>
-            <Link to={MainRoute}>
+            <Link to={mainRoute}>
               <Button
                 labelPosition='left'
                 icon='left chevron'
