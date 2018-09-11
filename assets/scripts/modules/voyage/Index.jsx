@@ -37,19 +37,35 @@ class Index extends React.Component {
     return(
       <div>
         <Menu attached='top' tabular>
-          <Menu.Item name='information' active={activeItem === 'information'} onClick={this.handleItemClick} />
+          <Menu.Item
+            name='information'
+            active={activeItem === 'information'}
+            onClick={this.handleItemClick}
+          />
           {(myVoyage.included.array.length > 0 || myVoyage.excluded.array.length > 0) &&
-            <Menu.Item name='include & excluded' active={activeItem === 'include & excluded'} onClick={this.handleItemClick} />
+            <Menu.Item
+              name='include'
+              active={activeItem === 'include'}
+              onClick={this.handleItemClick}
+            />
           }
         </Menu>
         <ul>
           <li>
             <Link to={MainRoute}>
-              <Button labelPosition='left' icon='left chevron' content='Back' />
+              <Button
+                labelPosition='left'
+                icon='left chevron'
+                content='Back'
+              />
             </Link>
           </li>
         </ul>
-        <MenuContent context={activeItem} voyage={myVoyage} options={options} />        
+        <MenuContent
+          context={activeItem}
+          voyage={myVoyage}
+          options={options}
+        />        
       </div>
     );
   }

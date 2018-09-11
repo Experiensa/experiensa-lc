@@ -1,6 +1,6 @@
 import React from 'react';
 import InformationContent from './InformationContent';
-import IncludedExcludedContent from './IncludedExcludedContent';
+import IncludedContent from './IncludedExcludedContent';
 
 class MenuContent extends React.Component {
   constructor(){
@@ -13,13 +13,16 @@ class MenuContent extends React.Component {
     if(context === "information"){
       return(
         <div>
-          <InformationContent voyage={voyage} options={options} />
+          <InformationContent
+            voyage={voyage}
+            options={options}
+          />
         </div>
       );
     }
     return(
       <div>
-        <IncludedExcludedContent voyage={voyage} />
+        <IncludedContent voyage={voyage} />
       </div>
     );
   }
