@@ -5,8 +5,6 @@ import Voyage from '../voyage/Index';
 import {getRoutes} from '../../util/Url';
 
 const {mainRoute, voyageUrl} = getRoutes();
-console.log('mainRoute', mainRoute);
-console.log('voyageUrl', voyageUrl);
 const Routes = ({options, filters }) => {
   return(
     <BrowserRouter>

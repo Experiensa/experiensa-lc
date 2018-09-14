@@ -97,40 +97,15 @@ class Catalog
         }
         return $options;
     }
-    public static function filters($id = "filters", $default = "country theme"){
-        // var_dump(self::filterOptions());
+    public static function filters($id = "filters", $default = "region country theme"){
+        /*var_dump(self::filterOptions());
+        var_dump($default);*/
         return array(
             'label' => __( 'Filters to show', 'experiensa' ),
             'id' => $id,
             'std' => $default,
             'type' => 'checkbox',
             'choices' => self::filterOptions(),
-            /*'choices' => array(
-                array(
-                    'label' => __( 'Category', 'experiensa' ),
-                    'value' => 'category',
-                ),
-                array(
-                    'label' => __( 'Country', 'experiensa' ),
-                    'value' => 'country',
-                ),
-                array(
-                    'label' => __( 'Destination', 'experiensa' ),
-                    'value' => 'destination',
-                ),
-                array(
-                    'label' => __( 'Themes', 'experiensa' ),
-                    'value' => 'themes',
-                ),
-                array(
-                    'label' => __( 'Includes', 'experiensa' ),
-                    'value' => 'includes',
-                ),
-                array(
-                    'label' => __( 'Excludes', 'experiensa' ),
-                    'value' => 'excludes',
-                )
-            ),*/
             'section' => 'styling',
 //            'tab' => __('Filters','experiensa')
         );

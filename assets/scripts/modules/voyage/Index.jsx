@@ -48,17 +48,6 @@ class Index extends React.Component {
             />
           }
         </Menu>
-        <ul>
-          <li>
-            <Link to={mainRoute}>
-              <Button
-                labelPosition='left'
-                icon='left chevron'
-                content='Back'
-              />
-            </Link>
-          </li>
-        </ul>
         <MenuContent
           context={activeItem}
           voyage={myVoyage}
@@ -83,3 +72,17 @@ function mapStateToProps(state){
 }
 
 export default connect( mapStateToProps )( Index );
+/**
+ * 
+ * <ul>
+          <li>
+            <Link to={mainRoute}>
+              <Button
+                labelPosition='left'
+                icon='left chevron'
+                content='Back'
+              />
+            </Link>
+          </li>
+        </ul>
+ */

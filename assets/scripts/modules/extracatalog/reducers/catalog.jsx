@@ -16,6 +16,8 @@ export const initialState = {
 	includes_active: [],
 	excludes: [],
 	excludes_active: [],
+	regions: [],
+	regions_active: [],
 	price_values: [],
 	input_text: '',
 	show_load_more: true,
