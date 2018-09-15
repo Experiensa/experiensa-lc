@@ -39,6 +39,9 @@ class FilterItem extends React.Component {
 				case 'includes': 
 					mainTitle = 'inclut';
 					break;
+				case 'regions':
+					mainTitle = 'les régions';
+					break;
 				default: 
 					mainTitle = title;
 					break;

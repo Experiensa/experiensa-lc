@@ -30,6 +30,9 @@ class FiltersContainer extends React.Component {
         case 'destination':
           filterName = 'destinations'
           break;
+        case 'region':
+          filterName = 'regions'
+          break;
         default:
           filterName = f
           break;
@@ -47,7 +50,6 @@ class FiltersContainer extends React.Component {
   }
   render() {
     const defaults = this.createFilterIndexList();
-    // console.log('key para price', defaults.length - 1)
     return(
       <Accordion 
         defaultActiveIndex={defaults} 

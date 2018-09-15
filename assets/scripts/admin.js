@@ -4,9 +4,7 @@ import renderShowcase from './modules/showcase';
 import renderRequest from './modules/request';
 import renderCatalog from './modules/catalog/index';
 import renderExtraCatalog from './modules/extracatalog';
-/*  if (!global._babelPolyfill && !window._babelPolyfill) {
-	import 'babel-polyfill';
-}*/
+
 jQuery(document).ajaxSuccess(function(event, xhr, settings) {
 	const action = 'action=dslc-ajax-add-module';
 	if (typeof settings.data !== 'undefined' && settings.data.indexOf(action) !== -1) {

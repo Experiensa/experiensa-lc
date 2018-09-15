@@ -14,7 +14,18 @@ class Index extends React.Component {
 
   render() {
     console.log('Index mis props son', this.props);
-    const { catalog, categories, includes, excludes, themes, destinations, countries, options, filters } = this.props;
+    const { 
+      catalog, 
+      categories, 
+      includes, 
+      excludes, 
+      themes, 
+      destinations, 
+      countries,
+      regions,
+      options, 
+      filters 
+    } = this.props;
     const { elements } = options;
     const values = {
       categories,
@@ -22,7 +33,8 @@ class Index extends React.Component {
       excludes,
       themes,
       destinations,
-      countries
+      countries,
+      regions
     };
     if (catalog.constructor === Array && catalog.length > 0) {
       return(
@@ -50,7 +62,16 @@ class Index extends React.Component {
 }
 function mapStateToProps(state){
   console.log('Index state es', state);
-  const { catalog, categories, includes, excludes, themes, destinations, countries } = state.catalog
+  const { 
+    catalog, 
+    categories, 
+    includes, 
+    excludes, 
+    themes, 
+    destinations, 
+    countries,
+    regions 
+  } = state.catalog;
   return {
       catalog,
       categories,
@@ -58,7 +79,8 @@ function mapStateToProps(state){
       excludes,
       themes,
       destinations,
-      countries
+      countries,
+      regions
   }
 }
 

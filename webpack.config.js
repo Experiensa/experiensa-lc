@@ -11,8 +11,8 @@ const devMode = env !== 'production'
 const webpackConfig = {
   mode: 'production',
   entry: {
-      admin: './assets/scripts/admin.js',
-      main: './assets/scripts/main.js',
+      admin: ['babel-polyfill','./assets/scripts/admin.js'],
+      main: ['babel-polyfill','./assets/scripts/main.js'],
       common: [
         'jquery'
       ]

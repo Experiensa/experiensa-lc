@@ -28,9 +28,6 @@ const store = createStore(
   ),
 )
 
-/*if (!global._babelPolyfill && !window._babelPolyfill) { 
-    import 'babel-polyfill';
-}*/
 console.log('experiensa_vars', experiensa_vars);
 export default function renderExtraCatalog() {
   let extra_catalog_app = document.getElementById('extracatalogApp');

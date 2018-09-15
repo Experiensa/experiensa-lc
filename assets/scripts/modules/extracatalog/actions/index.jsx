@@ -11,6 +11,7 @@ export const FILTER_DESTINATION = 'FILTER_DESTINATION';
 export const FILTER_THEME = 'FILTER_THEME';
 export const FILTER_INCLUDED = 'FILTER_INCLUDED';
 export const FILTER_EXCLUDED = 'FILTER_EXCLUDED';
+export const REGION_FILTER = 'REGION_FILTER';
 export const FILTER_PRICE = 'FILTER_PRICE';
 export const FILTER_INPUT = 'FILTER_INPUT';
 export const EDIT_LOAD_MORE = 'EDIT_LOAD_MORE';
@@ -78,7 +79,7 @@ function filterByPriceObject(catalog = [], filter = []){
             let price = catalog[i]['price']
             price = price == ""?0:parseInt(price)
             if(price >= min && price <= max){
-                auxList.push(catalog[i])
+                auxList.push(catalog[i]);
             }
         }
         return auxList
@@ -88,15 +89,16 @@ function filterByPriceObject(catalog = [], filter = []){
 function searchCatalog(catalog, filters){
     let auxCatalog = []
     if(catalog.length > 0){
-        auxCatalog = getFilteredCatalog(catalog, filters.categories,'category')
-        auxCatalog = getFilteredCatalog(auxCatalog, filters.countries,'country')
-        auxCatalog = getFilteredCatalog(auxCatalog, filters.excludes,'excluded')
-        auxCatalog = getFilteredCatalog(auxCatalog, filters.includes,'included')
-        auxCatalog = getFilteredCatalog(auxCatalog, filters.destinations,'location')
-        auxCatalog = getFilteredCatalog(auxCatalog, filters.themes,'theme')
-        auxCatalog = filterByPriceObject(auxCatalog, filters.prices)
-        auxCatalog = filterByObject(auxCatalog, filters.input, 'title')
-        auxCatalog = filterByObject(auxCatalog, filters.input, 'excerpt')
+        auxCatalog = getFilteredCatalog(catalog, filters.categories,'category');
+        auxCatalog = getFilteredCatalog(auxCatalog, filters.countries,'country');
+        auxCatalog = getFilteredCatalog(auxCatalog, filters.excludes,'excluded');
+        auxCatalog = getFilteredCatalog(auxCatalog, filters.includes,'included');
+        auxCatalog = getFilteredCatalog(auxCatalog, filters.destinations,'location');
+        auxCatalog = getFilteredCatalog(auxCatalog, filters.themes,'theme');
+        auxCatalog = getFilteredCatalog(auxCatalog, filters.regions,'region');
+        auxCatalog = filterByPriceObject(auxCatalog, filters.prices);
+        auxCatalog = filterByObject(auxCatalog, filters.input, 'title');
+        auxCatalog = filterByObject(auxCatalog, filters.input, 'excerpt');
         // auxCatalog = filterByTextTaxonomy(auxCatalog, filters.input, filters.user_filters)
     }
     return auxCatalog
@@ -145,6 +147,8 @@ function createCatalogObject(data, type = REQUEST_CATALOG, user_filters = [], sh
             includes_active: [],
             excludes: data.excluded_filter,
             excludes_active: [],
+            regions: data.region_filter,
+	        regions_active: [],
         }
   }
   return response
@@ -186,7 +190,8 @@ export function initLoadMore(post_per_row, init = true) {
 			excludes_active, 
 			includes_active, 
 			destinations_active, 
-			themes_active, 
+            themes_active,
+            regions_active, 
 			input_text,
 			price_values,
 		} = original_state;
@@ -215,7 +220,8 @@ export function initLoadMore(post_per_row, init = true) {
 			excludes_active, 
 			includes_active, 
 			destinations_active, 
-			themes_active, 
+            themes_active, 
+            regions_active,
 			input_text,
 			price_values,
 			show_load_more: show,
@@ -244,6 +250,7 @@ export function filterCatalog(filterType, value, active, extra_values = []){
             includes_active, 
             destinations_active, 
             themes_active, 
+            regions_active,
             input_text,
             price_values,
             show_load_more
@@ -266,7 +273,10 @@ export function filterCatalog(filterType, value, active, extra_values = []){
                 destinations_active = active?add_filter(value,destinations_active):delete_filter(value,destinations_active)
                 break
             case FILTER_THEME: 
-                themes_active = active?add_filter(value,themes_active):delete_filter(value,themes_active)
+                themes_active = active?add_filter(value,themes_active):delete_filter(value,themes_active);
+                break
+            case REGION_FILTER:
+                regions_active = active?add_filter(value, regions_active):delete_filter(value, regions_active);
                 break
             case FILTER_PRICE:
                 price_values = extra_values
@@ -283,6 +293,7 @@ export function filterCatalog(filterType, value, active, extra_values = []){
             && includes_active.length <1
             && destinations_active.length < 1
             && themes_active.length < 1
+            && regions_active.length < 1
             && price_values.length < 1
             && input_text.length < 1
         ){
@@ -296,6 +307,7 @@ export function filterCatalog(filterType, value, active, extra_values = []){
                 includes: includes_active,
                 destinations: destinations_active,
                 themes: themes_active,
+                regions: regions_active,
                 prices: price_values,
                 input: input_text,
             }
@@ -321,6 +333,8 @@ export function filterCatalog(filterType, value, active, extra_values = []){
             includes_active,
             excludes: original_state.excludes,
             excludes_active,
+            regions: original_state.regions,
+            regions_active,
             input_text,
             show_load_more,
         }
