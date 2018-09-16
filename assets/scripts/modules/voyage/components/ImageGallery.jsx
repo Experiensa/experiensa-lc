@@ -14,12 +14,14 @@ class ImageGallery extends React.Component {
   }
   imageList = () => {
     const { info } = this.props;
+    console.log('info', info);
+    console.log('imageDefaultUrl', imageDefaultUrl);
     let image = info.cover_image;
     let gallery = [];
     if(image.gallery.length > 0){
       gallery.push(image.gallery);
     }
-    if(image.feature){
+    if(image.feature_image){
       gallery.push(image.feature_image);
     }
     if(gallery.length < 1){
