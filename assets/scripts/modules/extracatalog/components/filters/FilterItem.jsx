@@ -1,5 +1,6 @@
 import React from 'react';
 import { Accordion, Icon } from 'semantic-ui-react';
+import i18n from '../../../../util/i18n';
 import FilterCheckGroup from './FilterCheckGroup';
 
 function jsUcfirst(string){
@@ -27,20 +28,20 @@ class FilterItem extends React.Component {
     if(items.length > 0){
 			let mainTitle = '';
 			switch(title){
-				case 'countries': 
-					mainTitle = 'pays';
+				case 'countries':
+					mainTitle = i18n.t('country.label');
 					break;
 				case 'themes': 
-					mainTitle = 'thèmes';
+					mainTitle = i18n.t('themes.label');
 					break;
 				case 'excludes': 
-					mainTitle = 'exclut';
+					mainTitle = i18n.t('excludes.label');
 					break;
 				case 'includes': 
-					mainTitle = 'inclut';
+					mainTitle = i18n.t('includes.label');
 					break;
 				case 'regions':
-					mainTitle = 'les régions';
+					mainTitle = i18n.t('regions.label');
 					break;
 				default: 
 					mainTitle = title;

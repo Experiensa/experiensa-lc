@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'semantic-ui-react';
+import i18n from '../../../util/i18n';
 import { initLoadMore } from '../actions';
 
 class LoadMoreContainer extends React.Component {
@@ -32,7 +33,7 @@ class LoadMoreContainer extends React.Component {
         onClick={this.handleClick}
         style={{marginTop: '10px'}}
       >
-        Charger plus
+        {i18n.t('load_more.label')}
       </Button>
     );
   }

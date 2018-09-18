@@ -5,6 +5,7 @@ use Experiensa_LC\Plugin\Modules\Extensions\LiveComposer\Options\Layout;
 use Experiensa_LC\Plugin\Modules\Extensions\LiveComposer\Options\Color;
 use Experiensa_LC\Plugin\Modules\Extensions\LiveComposer\Options\Font;
 use Experiensa_LC\Plugin\Modules\QueryBuilder;
+use Experiensa_LC\Plugin\Modules\Helpers;
 use Experiensa_LC\PLugin\Includes\Requires;
 
 if ( defined( 'DS_LIVE_COMPOSER_URL' ) && !class_exists('ExtraCatalog_LC_Module') ) {
@@ -213,11 +214,12 @@ if ( defined( 'DS_LIVE_COMPOSER_URL' ) && !class_exists('ExtraCatalog_LC_Module'
         }
         $voyage_border_radius = $options['voyage_border_radius'];
         $catalog_options = [
-            'type' => $type,
-            'elements' => $elements,
-            'post_per_row' => $post_per_row,
+            'type'                  => $type,
+            'elements'              => $elements,
+            'post_per_row'          => $post_per_row,
             'content_border_radius' => $voyage_border_radius,
-            'show_pdf_flyer' => $show_pdf_flyer_opt
+            'show_pdf_flyer'        => $show_pdf_flyer_opt,
+            'lang'                  => Helpers::getSiteLanguageCode()
         ];
 
         set_query_var('catalog_options',$catalog_options);
