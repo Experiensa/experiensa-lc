@@ -33,13 +33,15 @@ class VoyageCards extends React.Component {
         const {voyage, options, show, dType} = this.props;
         let priceComponent = '';
         // console.log('props de VoyageCards', this.props);
-        const price = Info.getVoyagePrice(voyage);
+        let price = Info.getVoyagePrice(voyage);
         if(price !== 'Non disponible'){
-            priceComponent = <DataRow show={show.price} title={i18n.t('price.label')} value={price} showTitle={false} strongContent={true} isTitle={false}/>;
+            priceComponent = <DataRow show={show.price} title={i18n.t('price.label')} value={price+'.-'} showTitle={false} strongContent={true} isTitle={false}/>;
+        }else{
+            price = i18n.t('not_available.label');
         }
         let button;
         if(show.detail_button){
-            button = <DetailsModal voyage={voyage} price={price} options={options} type="button"/>;
+            button = <DetailsModal voyage={voyage} price={price+'.-'} options={options} type="button"/>;
         }else{
             button = <div></div>;
         }
@@ -62,69 +64,72 @@ class VoyageCards extends React.Component {
                     />
                 )}
                 <div className="content">
-                    <DataRow 
-                        show={show.title}
-                        title={voyage.title}
-                        value="" showTitle={true}
-                        strongContent={false}
-                        isTitle={true}
-                    />
-                    <DataRow
-                        show={show.excerpt}
-                        title={i18n.t('excerpt.label')}
-                        value={voyage.excerpt}
-                        strongContent={false}
-                        showTitle={true}
-                        isTitle={false}
-                    />
-                    <DataRow
-                        show={show.duration}
-                        title={i18n.t('duration.label')}
-                        value={this.getDuration(voyage.duration)}
-                        showTitle={true}
-                        strongContent={false}
-                        isTitle={false}
-                    />
-                    <DataRow
-                        show={show.themes}
-                        title={i18n.t('themes.label')}
-                        value={voyage.theme.text}
-                        showTitle={true}
-                        strongContent={false}
-                        isTitle={false}
-                    />
-                    <DataRow
-                        show={show.destination}
-                        title="Lieux"
-                        value={voyage.location.text}
-                        showTitle={true}
-                        strongContent={false}
-                        isTitle={false}
-                    />
-                    <DataRow
-                        show={show.country}
-                        title={i18n.t('country.label')}
-                        value={voyage.country.text}
-                        showTitle={true}
-                        strongContent={false}
-                        isTitle={false}
-                    />
-                    <DataRow
-                        show={show.includes}
-                        title={i18n.t('includes.label')}
-                        value={voyage.included.text}
-                        showTitle={true}
-                        strongContent={false}
-                        isTitle={false}
-                    />
-                    <DataRow
-                        show={show.excludes}
-                        title={i18n.t('excludes.label')}
-                        value={voyage.excluded.text}
-                        showTitle={true}
-                        strongContent={false}
-                        isTitle={false}
-                    />
+                    <div style={{marginBottom:'10px'}}>
+                        <DataRow 
+                            show={show.title}
+                            title={voyage.title}
+                            value=""
+                            showTitle={true}
+                            strongContent={false}
+                            isTitle={true}
+                        />
+                        <DataRow
+                            show={show.excerpt}
+                            title={i18n.t('excerpt.label')}
+                            value={voyage.excerpt}
+                            strongContent={false}
+                            showTitle={true}
+                            isTitle={false}
+                        />
+                        <DataRow
+                            show={show.duration}
+                            title={i18n.t('duration.label')}
+                            value={this.getDuration(voyage.duration)}
+                            showTitle={true}
+                            strongContent={false}
+                            isTitle={false}
+                        />
+                        <DataRow
+                            show={show.themes}
+                            title={i18n.t('themes.label')}
+                            value={voyage.theme.text}
+                            showTitle={true}
+                            strongContent={false}
+                            isTitle={false}
+                        />
+                        <DataRow
+                            show={show.destination}
+                            title="Lieux"
+                            value={voyage.location.text}
+                            showTitle={true}
+                            strongContent={false}
+                            isTitle={false}
+                        />
+                        <DataRow
+                            show={show.country}
+                            title={i18n.t('country.label')}
+                            value={voyage.country.text}
+                            showTitle={true}
+                            strongContent={false}
+                            isTitle={false}
+                        />
+                        <DataRow
+                            show={show.includes}
+                            title={i18n.t('includes.label')}
+                            value={voyage.included.text}
+                            showTitle={true}
+                            strongContent={false}
+                            isTitle={false}
+                        />
+                        <DataRow
+                            show={show.excludes}
+                            title={i18n.t('excludes.label')}
+                            value={voyage.excluded.text}
+                            showTitle={true}
+                            strongContent={false}
+                            isTitle={false}
+                        />
+                    </div>
                     {priceComponent}
                 </div>
                 {dType=='link' && show.detail_button ? (

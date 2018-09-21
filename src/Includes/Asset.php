@@ -22,16 +22,17 @@ final class Asset{
         }
         $recaptchaData = Settings::getRecaptchaData();
         $localized_array = array(
-            'ajaxurl'=>admin_url('admin-ajax.php', $protocol),
-            'siteurl'=>get_bloginfo('url'),
-            'plugin_url' => EXPERIENSA_LC_URL,
-            'assets_url' => EXPERIENSA_LC_ASSETS_URL,
-            'dist_url'=>EXPERIENSA_LC_DIST_URL,
-            'agency_email' => $agency_email,
-            'google_api_key' => Settings::getGoogleAPIKey(),
-            'currency' => Settings::getCurrency(),
-            'recaptcha_site_key' => $recaptchaData['site_key'],
-            'recaptcha_secret_key' => $recaptchaData['secret_key']
+            'ajaxurl'               => admin_url('admin-ajax.php', $protocol),
+            'siteurl'               => get_bloginfo('url'),
+            'plugin_url'            => EXPERIENSA_LC_URL,
+            'assets_url'            => EXPERIENSA_LC_ASSETS_URL,
+            'dist_url'              => EXPERIENSA_LC_DIST_URL,
+            'agency_email'          => $agency_email,
+            'google_api_key'        => Settings::getGoogleAPIKey(),
+            'currency'              => Settings::getCurrency(),
+            'recaptcha_site_key'    => $recaptchaData['site_key'],
+            'recaptcha_secret_key'  => $recaptchaData['secret_key'],
+            'site_lang'             => Helpers::getSiteLanguageCode()
         );
         wp_enqueue_style('experiensa-css',EXPERIENSA_LC_URL . 'dist/main.style.css', []);
         wp_enqueue_style('experiensa-css',EXPERIENSA_LC_URL . 'assets/styles/style.css', []);
@@ -61,16 +62,17 @@ final class Asset{
         }
         $recaptchaData = Settings::getRecaptchaData();
         $localized_array = array(
-            'ajaxurl'=>admin_url('admin-ajax.php', $protocol),
-            'siteurl'=>get_bloginfo('url'),
-            'plugin_url' => EXPERIENSA_LC_URL,
-            'assets_url' => EXPERIENSA_LC_ASSETS_URL,
-            'dist_url'=>EXPERIENSA_LC_DIST_URL,
-            'agency_email' => $agency_email,
-            'google_api_key' => Settings::getGoogleAPIKey(),
-            'currency' => Settings::getCurrency(),
-            'recaptcha_site_key' => $recaptchaData['site_key'],
-            'recaptcha_secret_key' => $recaptchaData['secret_key']
+            'ajaxurl'               => admin_url('admin-ajax.php', $protocol),
+            'siteurl'               => get_bloginfo('url'),
+            'plugin_url'            => EXPERIENSA_LC_URL,
+            'assets_url'            => EXPERIENSA_LC_ASSETS_URL,
+            'dist_url'              => EXPERIENSA_LC_DIST_URL,
+            'agency_email'          => $agency_email,
+            'google_api_key'        => Settings::getGoogleAPIKey(),
+            'currency'              => Settings::getCurrency(),
+            'recaptcha_site_key'    => $recaptchaData['site_key'],
+            'recaptcha_secret_key'  => $recaptchaData['secret_key'],
+            'site_lang'             => Helpers::getSiteLanguageCode()
         );
         wp_enqueue_style('experiensa-css',EXPERIENSA_LC_URL . 'dist/main.style.css', []);
         wp_enqueue_script('experiensa/common_js', EXPERIENSA_LC_URL . 'dist/common.bundle.js');

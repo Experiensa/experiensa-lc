@@ -8,6 +8,7 @@ import reducers from './reducers';
 import Request from './components/Request';
 
 import 'semantic-ui-css/semantic.css';
+import '../../../styles/style.css';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

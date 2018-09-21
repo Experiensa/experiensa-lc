@@ -6,7 +6,7 @@ i18next
       // React already does escaping
       escapeValue: false,
     },
-    lng: 'fr', // 'en' | 'es'
+    lng: experiensa_vars.site_lang || 'en',
     // Using simple hardcoded resources for simple example
     resources: {
       en: {
@@ -23,6 +23,7 @@ i18next
           price: { label: 'Pice', },
           load_more: { label: 'Load More', },
           regions: { label: 'Regions', },
+          not_available: { label: 'Not Available', },
         },
       },
       es: {
@@ -39,6 +40,7 @@ i18next
           price: { label: 'Precio', },
           load_more: { label: 'Cargas más', },
           regions: { label: 'Regiones', },
+          not_available: { label: 'No Disponible', },
         },
       },
       fr: {
@@ -55,6 +57,7 @@ i18next
           price: { label: 'Prix', },
           load_more: { label: 'Charger plus', },
           regions: { label: ' Les régions', },
+          not_available: { label: 'Non disponible', },
         },
       }
     },

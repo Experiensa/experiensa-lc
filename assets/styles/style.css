@@ -35,8 +35,14 @@ https://github.com/Semantic-Org/Semantic-UI-React/issues/2558
 .ui.page.modals.dimmer.transition.visible.active{
   z-index: 900000;
 }
-@media only screen and (max-width: 767px){
-  .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .fields, .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .field, .ui.form:not(.unstackable) .three.fields:not(.unstackable) > .fields, .ui.form:not(.unstackable) .three.fields:not(.unstackable) > .field, .ui.form:not(.unstackable) .four.fields:not(.unstackable) > .fields, .ui.form:not(.unstackable) .four.fields:not(.unstackable) > .field, .ui.form:not(.unstackable) .five.fields:not(.unstackable) > .fields, .ui.form:not(.unstackable) .five.fields:not(.unstackable) > .field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .two.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .three.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .four.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .five.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .six.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .seven.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .eight.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .nine.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .ten.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .eleven.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .twelve.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .thirteen.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .fourteen.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .fifteen.wide.field, .ui.form:not(.unstackable) .fields:not(.unstackable) > .sixteen.wide.field{
+@media only screen and (max-width: 767px) {
+  /* #requestComponent > */
+  .ui.form:not(.unstackable) .fields:not(.unstackable) > .seven.wide.field{
+    margin-bottom: 5px !important;
+  }
+  .ui.form:not(.unstackable) .fields:not(.unstackable) > .seven.wide.field, 
+  .ui.form:not(.unstackable) .fields:not(.unstackable) > .three.wide.field,
+  .ui.form:not(.unstackable) .fields:not(.unstackable) > .sixteen.wide.field{
     margin-bottom: 5px !important;
   }
 }
