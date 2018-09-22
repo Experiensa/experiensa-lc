@@ -159,12 +159,16 @@ function createCatalogObject(data, type = REQUEST_CATALOG, user_filters = [], sh
  */
 export function requestCatalog(user_filters, showNumber) {
   return(dispatch,getState)=>{
+      console.log('getState', getState());
       let localApiCatalogURL = experiensa_vars.siteurl + '/wp-json/wp/v2/catalog'
       axios.get(localApiCatalogURL, {timeout: 30000})
       .then((response)=>{
-          console.log('response.data', response.data);
-          let catalogResponse = createCatalogObject(response.data, REQUEST_CATALOG, user_filters, showNumber * 3)
-          console.log('catalogo formateado', catalogResponse)
+        let catalogResponse;
+            console.log('response.data', response.data);
+          if(response.data.length > 0){
+            catalogResponse = createCatalogObject(response.data, REQUEST_CATALOG, user_filters, showNumber * 3)
+            console.log('catalogo formateado', catalogResponse)
+          }          
           dispatch(
               {
                   type: REQUEST_CATALOG,

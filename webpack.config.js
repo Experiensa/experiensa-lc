@@ -137,7 +137,7 @@ const webpackConfig = {
   },
   devtool: 'source-map',
   'plugins': [
-      new CleanWebpackPlugin(['dist']),
+      // new CleanWebpackPlugin(['dist']),
       new UglifyJSPlugin({
         sourceMap: true
       }),
