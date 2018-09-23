@@ -1,9 +1,9 @@
 import 'rc-slider/assets/index.css';
 import React from 'react';
 import {connect} from 'react-redux';
-import ReactDOM from 'react-dom';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 import { Accordion, Icon } from 'semantic-ui-react';
+import i18n from '../../../../util/i18n';
 import {filterCatalog} from '../../actions';
 
 const Range = Slider.Range
@@ -25,7 +25,7 @@ class PriceFilter extends React.Component{
   }
   handleClick = (e) => {
     const { isActive } = this.state;
-    console.log('is active', isActive);
+    // console.log('is active', isActive);
 		this.setState({
 			isActive: !isActive
 		})
@@ -46,7 +46,7 @@ class PriceFilter extends React.Component{
           onClick={(e) => this.handleClick(e)}
         >
           <Icon name='dropdown' />
-          Prix
+          {i18n.t('price.label')}
         </Accordion.Title>
         <Accordion.Content active={isActive}>
           <SliderWithTooltip

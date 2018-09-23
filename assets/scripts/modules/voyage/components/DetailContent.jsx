@@ -1,4 +1,5 @@
 import React from 'react';
+import i18n from '../../../util/i18n';
 
 class DetailContent extends React.Component {
   constructor(){
@@ -8,7 +9,7 @@ class DetailContent extends React.Component {
     const { voyage } = this.props;
     let value = "";
     if(voyage.price){
-        value = "<b>Prix</b>: "+ voyage.price+" "
+        value = "<b>"+i18n.t('price.label')+"</b>: "+ voyage.price+" "
         if(voyage.currency)
             value += voyage.currency
         value += "<br/>"
@@ -17,11 +18,11 @@ class DetailContent extends React.Component {
   }
   duration = () =>{
     const { voyage } = this.props;
-    return (voyage.duration.text?"<b>Durée</b>: " + voyage.duration.text+"<br/>":"")
+    return (voyage.duration.text?"<b>"+i18n.t('duration.label')+"</b>: " + voyage.duration.text+"<br/>":"")
   }
   country = () =>{
     const { voyage } = this.props;
-    return (voyage.country.text?"<b>Pays</b>: " + voyage.country.text+"<br/>":"")
+    return (voyage.country.text?"<b>"+i18n.t('country.label')+"</b>: " + voyage.country.text+"<br/>":"")
   }
   destination = () =>{
     const { voyage } = this.props;
@@ -29,7 +30,7 @@ class DetailContent extends React.Component {
   }
   theme = () =>{
     const { voyage } = this.props;
-    return (voyage.theme.text?"<b>Thème</b>: " + voyage.theme.text+"<br/>":"")
+    return (voyage.theme.text?"<b>"+i18n.t('themes.label')+"</b>: " + voyage.theme.text+"<br/>":"")
   }
   flyer = () => {
     const { voyage, options } = this.props;

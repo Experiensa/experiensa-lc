@@ -1,6 +1,7 @@
 import React from 'react';
 import InformationContent from './InformationContent';
 import IncludedContent from './IncludedExcludedContent';
+import i18n from '../../../util/i18n';
 
 class MenuContent extends React.Component {
   constructor(){
@@ -10,7 +11,7 @@ class MenuContent extends React.Component {
   render() {
     console.log('MenuContent',this.props);
     const { context, voyage, options } = this.props;
-    if(context === "information"){
+    if(context === i18n.t('information.label').toLowerCase()){
       return(
         <div>
           <InformationContent

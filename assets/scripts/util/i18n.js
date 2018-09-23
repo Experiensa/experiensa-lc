@@ -24,6 +24,7 @@ i18next
           load_more: { label: 'Load More', },
           regions: { label: 'Regions', },
           not_available: { label: 'Not Available', },
+          information: { label: 'Information', },
         },
       },
       es: {
@@ -35,12 +36,13 @@ i18next
           duration: { label: 'Duración', },
           excerpt: { label: 'Extracto', },
           places: { label: 'Lugares', },
-          includes: { label: 'Incuidos', },
+          includes: { label: 'Incluidos', },
           excludes: { label: 'Excluye', },
           price: { label: 'Precio', },
           load_more: { label: 'Cargas más', },
           regions: { label: 'Regiones', },
           not_available: { label: 'No Disponible', },
+          information: { label: 'Información', },
         },
       },
       fr: {
@@ -58,6 +60,7 @@ i18next
           load_more: { label: 'Charger plus', },
           regions: { label: ' Les régions', },
           not_available: { label: 'Non disponible', },
+          information: { label: 'Information', },
         },
       }
     },

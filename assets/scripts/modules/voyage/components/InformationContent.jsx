@@ -15,7 +15,6 @@ class InformationContent extends React.Component {
       <div>
         <br />
         <Header as='h1'>{title}</Header>
-        <br />
         <Grid stackable columns={2} divided>
           <Grid.Column width={6}>
             <ImageGallery info={voyage} />

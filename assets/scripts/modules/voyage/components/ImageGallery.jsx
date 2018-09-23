@@ -1,16 +1,16 @@
 import React from 'react';
-import Lightbox from 'react-images';
+import Lightbox from 'react-image-lightbox';
 import { Image } from 'semantic-ui-react';
+import 'react-image-lightbox/style.css';
 import imageDefaultUrl from '../../../../images/travel-no-image.jpg';
-/*
-isOpen={this.state.lightboxIsOpen}
-onClickPrev={this.gotoPrevLightboxImage}
-onClickNext={this.gotoNextLightboxImage}
-onClose={this.closeLightbox}
-*/
+
 class ImageGallery extends React.Component {
   constructor(){
     super();
+    this.state = {
+      photoIndex: 0,
+      isOpen: false
+    };
   }
   imageList = () => {
     const { info } = this.props;
@@ -19,9 +19,9 @@ class ImageGallery extends React.Component {
     let image = info.cover_image;
     let gallery = [];
     if(image.gallery.length > 0){
-      gallery.push(image.gallery);
+      gallery = image.gallery;
     }
-    if(image.feature_image){
+    if(image.feature_image && gallery.length < 1){
       gallery.push(image.feature_image);
     }
     if(gallery.length < 1){
@@ -29,18 +29,49 @@ class ImageGallery extends React.Component {
     }
     return gallery;
   }
+  imageSrcList = (list) => {
+    let auxList = [];
+    for(let i = 0; i < list.length; i++){
+      auxList.push({
+        src: list[i],
+      });
+    }
+    return auxList;
+  }
   imageBox = () => {
+    const { photoIndex, isOpen } = this.state;
     const list = this.imageList();
-    /*if(list.length > 1){
+    console.log('my imageList', list);
+    if(list.length > 1){
+      const images = list;
       return(
-        <Lightbox
-          images={list}
-        />
+        <div>
+          <Image 
+            size='large'
+            src={list[0]}
+            onClick={() => this.setState({ isOpen: true })}
+          />
+          {isOpen && (
+            <Lightbox
+              mainSrc={images[photoIndex]}
+              nextSrc={images[(photoIndex + 1) % images.length]}
+              prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+              onCloseRequest={() => this.setState({ isOpen: false })}
+              onMovePrevRequest={() =>
+                this.setState({
+                  photoIndex: (photoIndex + images.length - 1) % images.length
+                })}
+              onMoveNextRequest={() =>
+                this.setState({
+                  photoIndex: (photoIndex + 1) % images.length
+                })}
+            />
+          )}
+        </div>
       );
     }else{
       return(<Image size='large' src={list[0]} />);
-    }*/
-    return(<Image size='large' src={list[0]} />);
+    }    
   }
   render(){
     return(this.imageBox());

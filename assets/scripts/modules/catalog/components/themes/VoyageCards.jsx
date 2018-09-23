@@ -35,7 +35,14 @@ class VoyageCards extends React.Component {
         // console.log('props de VoyageCards', this.props);
         let price = Info.getVoyagePrice(voyage);
         if(price !== 'Non disponible'){
-            priceComponent = <DataRow show={show.price} title={i18n.t('price.label')} value={price+'.-'} showTitle={false} strongContent={true} isTitle={false}/>;
+            priceComponent = <DataRow
+                                show={show.price} 
+                                title={i18n.t('price.label')} 
+                                value={price+'.-'} 
+                                showTitle={false} 
+                                strongContent={true} 
+                                isTitle={false}
+                            />;
         }else{
             price = i18n.t('not_available.label');
         }
@@ -64,7 +71,7 @@ class VoyageCards extends React.Component {
                     />
                 )}
                 <div className="content">
-                    <div style={{marginBottom:'10px'}}>
+                    <div style={{marginBottom:'18px'}}>
                         <DataRow 
                             show={show.title}
                             title={voyage.title}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Header, List } from 'semantic-ui-react';
+import i18n from '../../../util/i18n';
 
 class IncludedExcludedContent extends React.Component {
   constructor(){
@@ -18,21 +19,23 @@ class IncludedExcludedContent extends React.Component {
     });
   }
   render() {
+    // console.log('-*-*-*-*-', this.props.voyage);
     const { title } = this.props.voyage;
     return(
       <div>
+        <br />
         <Header as='h1'>{title}</Header>
         <Grid stackable columns={2} divided>
           <Grid.Column width={8}>
-            <Header as='h3'>Comprend</Header>
+            <Header as='h3'>{i18n.t('includes.label')}</Header>
             <List bulleted>
               {this.listIncluded()}
             </List>
           </Grid.Column>
           <Grid.Column width={8}>
-            <Header as='h3'>Exclut</Header>
+            <Header as='h3'>{i18n.t('excludes.label')}</Header>
             <List bulleted>
-              {this.listIncluded()}
+              {this.listExcluded()}
             </List>
           </Grid.Column>
         </Grid>

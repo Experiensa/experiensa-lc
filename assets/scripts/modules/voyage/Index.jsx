@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Menu, Button } from 'semantic-ui-react';
 import MenuContent from './components/MenuContent';
 import {getRoutes} from '../../util/Url';
+import i18n from '../../util/i18n';
 
 const {mainRoute} = getRoutes();
 
@@ -11,7 +12,7 @@ class Index extends React.Component {
   constructor(){
     super();
     this.state = {
-      activeItem: 'information'
+      activeItem: i18n.t('information.label').toLowerCase(),
     };
   }
   searchItem = (id, catalog) => {
@@ -36,14 +37,14 @@ class Index extends React.Component {
       <div>
         <Menu attached='top' tabular>
           <Menu.Item
-            name='information'
-            active={activeItem === 'information'}
+            name={i18n.t('information.label').toLowerCase()}
+            active={activeItem === i18n.t('information.label').toLowerCase()}
             onClick={this.handleItemClick}
           />
           {(myVoyage.included.array.length > 0 || myVoyage.excluded.array.length > 0) &&
             <Menu.Item
-              name='include'
-              active={activeItem === 'include'}
+              name={i18n.t('includes.label').toLowerCase()}
+              active={activeItem === i18n.t('includes.label').toLowerCase()}
               onClick={this.handleItemClick}
             />
           }

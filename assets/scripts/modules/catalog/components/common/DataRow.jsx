@@ -1,10 +1,12 @@
 import React from 'react';
+import i18n from '../../../../util/i18n';
 
 export default class DataRow extends React.Component {
     constructor(){
         super()
     }
     render(){
+        //console.log('props DataRow', this.props);
         const {show, isTitle, title, value, showTitle, strongContent} = this.props;
         const priceStyle = {
             position: 'absolute',
@@ -15,7 +17,6 @@ export default class DataRow extends React.Component {
             marginRight: '-50%',
             transform: 'translate(-50%,-50%)'
         };
-        //console.log('props DataRow', this.props);
         if(show){
             if(isTitle && title){
                 return(
@@ -24,14 +25,13 @@ export default class DataRow extends React.Component {
             }else{
                 if(value) {
                     return (
-                        <div className="voyage-content" style={title==='Prix'?priceStyle:{}}>
+                        <div className="voyage-content" style={title===i18n.t('price.label')?priceStyle:{}}>
                             {showTitle && <strong>{title}: </strong>}
                             {strongContent? (
                                 <strong dangerouslySetInnerHTML={{__html:value}}/>
                             ):(
                                 <div dangerouslySetInnerHTML={{__html:value}}/>
-                            )}
-                            
+                            )}                            
                         </div>
                     )
                 }else{

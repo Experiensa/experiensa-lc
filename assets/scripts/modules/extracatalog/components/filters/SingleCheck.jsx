@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Form, Checkbox } from 'semantic-ui-react';
-import {filterCatalog} from '../../actions';
+import { filterCatalog } from '../../actions';
 
 class SingleCheck extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class SingleCheck extends Component {
     const { checked, value } = data;
     const { filterName } = this.props;
     let filterType = 'FILTER_' + filterName.toUpperCase();
-    //console.log('voy a buscar', filterType, value, checked);
+    console.log('voy a buscar', filterType, value, checked);
     this.props.filterCatalog(filterType, value, !isActive);
   }
   render() {
