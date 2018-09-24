@@ -36,6 +36,8 @@ class Index extends React.Component {
       countries,
       regions
     };
+    console.log('catalog.constructor ', catalog.constructor );
+    console.log('catalog.length ', catalog.length );
     if (catalog.constructor === Array && catalog.length > 0) {
       return(
         <Grid stackable columns={2} divided>

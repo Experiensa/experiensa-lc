@@ -334,7 +334,7 @@ export function filterCatalog(filterType, value, active, extra_values = []){
 					console.log('voy a buscar con estos datos:');
 					console.log('originalCatalog', originalCatalog);
 					console.log('myFilters', myFilters);
-					newCatalog = searchCatalog(originalCatalog, myFilters);            
+					newCatalog = searchCatalog(originalCatalog, myFilters);
         }
         const catalogResponse = {
 					catalog: newCatalog,
