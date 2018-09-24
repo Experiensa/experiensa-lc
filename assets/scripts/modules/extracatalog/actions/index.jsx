@@ -104,6 +104,7 @@ function searchCatalog(catalog, filters){
 		auxCatalog = filterByObject(auxCatalog, filters.input, 'excerpt');
 		// auxCatalog = filterByTextTaxonomy(auxCatalog, filters.input, filters.user_filters)
 	}
+	console.log('catalogo conseguido', auxCatalog);
 	return auxCatalog;
 }
 function countShowCatalog(catalog){
