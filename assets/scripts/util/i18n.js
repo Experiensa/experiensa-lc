@@ -25,6 +25,7 @@ i18next
           regions: { label: 'Regions', },
           not_available: { label: 'Not Available', },
           information: { label: 'Information', },
+          page_not_found: { label: 'Page Not Found'},
         },
       },
       es: {
@@ -43,6 +44,7 @@ i18next
           regions: { label: 'Regiones', },
           not_available: { label: 'No Disponible', },
           information: { label: 'Información', },
+          page_not_found: { label: 'Página no encontrada'},
         },
       },
       fr: {
@@ -61,6 +63,7 @@ i18next
           regions: { label: ' Les régions', },
           not_available: { label: 'Non disponible', },
           information: { label: 'Information', },
+          page_not_found: { label: 'Page non trouvée'},
         },
       }
     },

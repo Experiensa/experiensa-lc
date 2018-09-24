@@ -38,7 +38,7 @@ class Index extends React.Component {
     };
     console.log('catalog.constructor ', catalog.constructor );
     console.log('catalog.length ', catalog.length );
-    if (catalog.constructor === Array && catalog.length > 0) {
+    if (catalog.constructor === Array) {
       return(
         <Grid stackable columns={2} divided>
           <Grid.Column width={4}>
@@ -59,7 +59,7 @@ class Index extends React.Component {
 					content='Loading'
 				/>
 			</div>
-		);
+    );
   }
 }
 function mapStateToProps(state){
