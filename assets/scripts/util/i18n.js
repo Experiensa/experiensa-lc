@@ -63,7 +63,7 @@ i18next
           regions: { label: ' Les régions', },
           not_available: { label: 'Non disponible', },
           information: { label: 'Information', },
-          page_not_found: { label: 'Page non trouvée'},
+          page_not_found: { label: 'Un instant svp'},
         },
       }
     },
