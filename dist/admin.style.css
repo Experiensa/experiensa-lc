@@ -41589,12 +41589,13 @@ https://github.com/Semantic-Org/Semantic-UI-React/issues/2558
   z-index: 900000;
 }
 @media only screen and (max-width: 767px) {
-  /* #requestComponent > */
   .ui.form:not(.unstackable) .fields:not(.unstackable) > .seven.wide.field{
     margin-bottom: 5px !important;
   }
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .seven.wide.field, 
   .ui.form:not(.unstackable) .fields:not(.unstackable) > .three.wide.field,
+  .ui.form:not(.unstackable) .fields:not(.unstackable) > .four.wide.field,
+  .ui.form:not(.unstackable) .fields:not(.unstackable) > .five.wide.field,
+  .ui.form:not(.unstackable) .fields:not(.unstackable) > .seven.wide.field, 
   .ui.form:not(.unstackable) .fields:not(.unstackable) > .sixteen.wide.field{
     margin-bottom: 5px !important;
   }
