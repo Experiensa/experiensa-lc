@@ -20,7 +20,7 @@ i18next
           places: { label: 'Places', },
           includes: { label: 'Includes', },
           excludes: { label: 'Excludes', },
-          price: { label: 'Pice', },
+          price: { label: 'Price', },
           load_more: { label: 'Load More', },
           regions: { label: 'Regions', },
           not_available: { label: 'Not Available', },
