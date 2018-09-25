@@ -1,6 +1,7 @@
 import React from 'react';
-import { Grid, Header, Button } from 'semantic-ui-react';
+import { Grid, Header, Button, Icon } from 'semantic-ui-react';
 import DetailContent from './DetailContent';
+import i18n from '../../../util/i18n';
 import ImageGallery from './ImageGallery';
 
 class InformationContent extends React.Component {
@@ -11,6 +12,8 @@ class InformationContent extends React.Component {
   render() {
     const { options, voyage } = this.props;
     const { content, title } = voyage;
+    const encodedSubject = encodeURIComponent(title);
+    const mailto = 'mailto:'+experiensa_vars.agency_email+'?subject='+encodedSubject;
     return(
       <div>
         <br />
@@ -25,6 +28,10 @@ class InformationContent extends React.Component {
             <p dangerouslySetInnerHTML={{__html: content}} />
           </Grid.Column>
         </Grid>
+        <a className="ui positive right labeled icon button" href={mailto}>
+            {i18n.t('contact_us.label')}
+            <Icon name='checkmark'/>
+        </a>
       </div>
     );
   }

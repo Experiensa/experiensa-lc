@@ -26,6 +26,7 @@ i18next
           not_available: { label: 'Not Available', },
           information: { label: 'Information', },
           page_not_found: { label: 'Page Not Found'},
+          contact_us: { label: 'Contact us'},
         },
       },
       es: {
@@ -45,6 +46,7 @@ i18next
           not_available: { label: 'No Disponible', },
           information: { label: 'Información', },
           page_not_found: { label: 'Página no encontrada'},
+          contact_us: { label: 'Contáctenos'},
         },
       },
       fr: {
@@ -59,11 +61,12 @@ i18next
           includes: { label: 'Inclus', },
           excludes: { label: 'Exclus', },
           price: { label: 'Prix', },
-          load_more: { label: 'Charger plus', },
-          regions: { label: ' Les régions', },
-          not_available: { label: 'Non disponible', },
-          information: { label: 'Information', },
-          page_not_found: { label: 'Un instant svp'},
+          load_more: { label: 'Charger plus' },
+          regions: { label: ' Les régions' },
+          not_available: { label: 'Non disponible' },
+          information: { label: 'Information' },
+          page_not_found: { label: 'Un instant svp' },
+          contact_us: { label: 'Nous contacter' },
         },
       }
     },
