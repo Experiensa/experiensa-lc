@@ -229,4 +229,20 @@ class Layout
             'tab' => __( $tab, 'experiensa' )
         );
     }
+    public static function show_tour_operator($id = 'show_tour_operator', $label = 'Show Tour Operator', $default = '', $tab = 'Content'){
+        return array(
+            'label' => $label,
+            'id' => $id,
+            'std' => $default,
+            'type' => 'checkbox',
+            'choices' => array(
+                array(
+                    'label' => 'Show',
+                    'value' => 'show'
+                )
+            ),
+            'section' => 'styling',
+            'tab' => __( $tab, 'experiensa' )
+        );
+    }
 }

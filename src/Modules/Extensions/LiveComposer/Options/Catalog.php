@@ -73,7 +73,11 @@ class Catalog
                 array(
                     'label' => __( 'Flyer', 'experiensa' ),
                     'value' => 'flyer',
-                )
+                )/*,
+                array(
+                    'label' => __( 'Tour Operator', 'experiensa' ),
+                    'value' => 'operator',
+                )*/
             ),
             'section' => 'styling',
         );

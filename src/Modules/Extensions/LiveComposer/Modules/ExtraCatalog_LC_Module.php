@@ -174,6 +174,7 @@ if ( defined( 'DS_LIVE_COMPOSER_URL' ) && !class_exists('ExtraCatalog_LC_Module'
                 'tab' => __( 'Content', 'experiensa' )
             ),
             Layout::show_flyer_pdf(),
+            Layout::show_tour_operator(),
             array(
                 'id' => 'css_detail_content_group',
                 'type' => 'group',
@@ -212,6 +213,13 @@ if ( defined( 'DS_LIVE_COMPOSER_URL' ) && !class_exists('ExtraCatalog_LC_Module'
         }else{
             $show_pdf_flyer_opt = "";
         }
+        $show_tour_operator_opt = $options['show_tour_operator'];
+        if ( ! empty( $show_tour_operator_opt ) ){
+            $show_tour_operator_opt = explode( ' ', trim( $show_tour_operator_opt ) );
+            $show_tour_operator_opt = $show_tour_operator_opt[0];
+        }else{
+            $show_tour_operator_opt = "";
+        }
         $voyage_border_radius = $options['voyage_border_radius'];
         $catalog_options = [
             'type'                  => $type,
@@ -219,6 +227,7 @@ if ( defined( 'DS_LIVE_COMPOSER_URL' ) && !class_exists('ExtraCatalog_LC_Module'
             'post_per_row'          => $post_per_row,
             'content_border_radius' => $voyage_border_radius,
             'show_pdf_flyer'        => $show_pdf_flyer_opt,
+            'show_tour_operator'    => $show_tour_operator_opt,
             'lang'                  => Helpers::getSiteLanguageCode()
         ];
 

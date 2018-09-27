@@ -1,15 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Menu, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+// import { Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
 import MenuContent from './components/MenuContent';
-import {getRoutes} from '../../util/Url';
+// import { getRoutes } from '../../util/Url';
 import i18n from '../../util/i18n';
 
-const {mainRoute} = getRoutes();
+//  const {mainRoute} = getRoutes();
 
 class Index extends React.Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       activeItem: i18n.t('information.label').toLowerCase(),
