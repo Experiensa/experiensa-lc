@@ -1,15 +1,22 @@
 import React from 'react';
 import _ from 'lodash';
-import { Card } from 'semantic-ui-react';
+import { Card, Loader } from 'semantic-ui-react';
 import VoyageCards from '../../catalog/components/themes/VoyageCards';
 import i18n from '../../../util/i18n';
 const ld = _.noConflict();
 
 class ResultsContainer extends React.Component {
   constructor(){
-    super()
+    super();
+    this.state = {
+      loading: true
+    };
   }
-
+  componentDidMount(){
+    this.setState({
+      loading: false
+    });
+  }
   elementsToShow(){
     const { elements } = this.props
     return({
@@ -38,16 +45,29 @@ class ResultsContainer extends React.Component {
   }
   render() {
     const { options, voyages } = this.props;
-    if(voyages.length > 0){
-      return(
-        <Card.Group className="stackable" itemsPerRow={parseInt(options.post_per_row)}>
-          {this.renderVoyageCards()}
-        </Card.Group>
-      );
+    const { loading } = this.state;
+    if( loading === false){
+      if(voyages.length > 0){
+        return(
+          <Card.Group className="stackable" itemsPerRow={parseInt(options.post_per_row)}>
+            {this.renderVoyageCards()}
+          </Card.Group>
+        );
+      }else{
+        return(
+          <div>
+            {i18n.t('page_not_found.label')}
+          </div>
+        );
+      }
     }else{
-      return(
+      return (
         <div>
-          {i18n.t('page_not_found.label')}
+          <Loader
+            active
+            inline='centered'
+            content='Loading'
+          />
         </div>
       );
     }

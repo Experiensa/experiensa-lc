@@ -163,6 +163,7 @@ function createCatalogObject(data, type = REQUEST_CATALOG, user_filters = [], sh
 				excludes_active: [],
 				regions: data.region_filter,
 				regions_active: [],
+				show_load_more: (customCatalog.length > showNumber)
 			}
   }
   return response;
@@ -183,7 +184,7 @@ export function requestCatalog(user_filters, showNumber) {
 			if(response.data.length == 0){
 				catalogResponse = getState().catalog;
 			}else{
-				catalogResponse = createCatalogObject(response.data, REQUEST_CATALOG, user_filters, showNumber * 9)
+				catalogResponse = createCatalogObject(response.data, REQUEST_CATALOG, user_filters, showNumber * 6);
 			}
 			console.log('catalogo formateado', catalogResponse);
 			dispatch(

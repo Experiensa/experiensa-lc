@@ -15,7 +15,7 @@ class LoadMoreContainer extends React.Component {
   handleClick = (e) => {
     const { post_per_row } = this.props;
     console.log('voy a cargar mas viajes');
-    this.props.initLoadMore(post_per_row, false);
+    this.props.initLoadMore(post_per_row * 4, false);
     e.preventDefault();
 }
   render() {

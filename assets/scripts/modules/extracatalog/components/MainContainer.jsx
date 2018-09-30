@@ -25,7 +25,7 @@ class MainContainer extends React.Component {
 }
 
 function mapStateToProps(state){
-  return {}
+  return {};
 }
 
 export default connect( mapStateToProps, { requestCatalog } )( MainContainer );
