@@ -164,7 +164,7 @@ if ( defined( 'DS_LIVE_COMPOSER_URL' ) ) {
         }
     }
     // Register Module
-    add_action('dslc_hook_register_modules',
-        create_function('', 'return dslc_register_module( "Showcase_LC_Module" );')
-    );
+    add_action('dslc_hook_register_modules', function(){
+        return dslc_register_module( "Showcase_LC_Module" );
+    });
 }

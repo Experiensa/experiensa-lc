@@ -1,6 +1,6 @@
 require('es6-promise').polyfill();
-import axios from 'axios'
-import _ from 'lodash'
+import axios from 'axios';
+import _ from 'lodash';
 const ld = _.noConflict();
 //Action Types
 export const REQUEST_CATALOG = 'REQUEST_CATALOG';
@@ -15,35 +15,34 @@ export const FILTER_REGION = 'FILTER_REGION';
 export const FILTER_PRICE = 'FILTER_PRICE';
 export const FILTER_INPUT = 'FILTER_INPUT';
 export const EDIT_LOAD_MORE = 'EDIT_LOAD_MORE';
-
 /**
  * Helper functions
  */
 function add_filter(value, filters){
-    if (filters.indexOf(value) === -1) {
-        filters.push(value);
-    }
-    return filters
+  if (filters.indexOf(value) === -1) {
+    filters.push(value);
+  }
+  return filters
 }
 function delete_filter(value, filters){
-    var index = filters.indexOf(value);
-    if (index !== -1) {
-        filters.splice(index, 1);
-    }
-    return filters
+  var index = filters.indexOf(value);
+  if (index !== -1) {
+    filters.splice(index, 1);
+  }
+  return filters
 }
 function getFilteredCatalog(catalog = [], filters = [], object_name){
-    let auxList = []
-    if(filters.length > 0) {
-        for (var i in catalog) {
-            let intersection = ld.intersection(catalog[i][object_name]['array'], filters)
-            if (intersection.length > 0 && intersection.length == filters.length) {
-                auxList.push(catalog[i])
-            }
-        }
-        return auxList
+  let auxList = []
+  if(filters.length > 0) {
+    for (var i in catalog) {
+      let intersection = ld.intersection(catalog[i][object_name]['array'], filters)
+      if (intersection.length > 0 && intersection.length == filters.length) {
+        auxList.push(catalog[i])
+      }
     }
-    return catalog
+    return auxList
+  }
+  return catalog
 }
 function filterByObject(catalog = [], filter = '', object_name){
     let auxList = [];
@@ -117,6 +116,7 @@ function countShowCatalog(catalog){
 	return tam;
 }
 function editShowCatalog(showNumber, catalog){
+	console.log('editShowCatalog showNumber', showNumber);
 	let auxList = [];
 	if(catalog.length > 0) {
 		for(var i in catalog){
@@ -129,19 +129,22 @@ function editShowCatalog(showNumber, catalog){
 	}
 	return auxList;
 }
-function cleanShowCatalog(catalog){
+function cleanShowCatalog(catalog, show = true){
 	let auxList = [];
 	if(catalog.length > 0) {
 		for(var i in catalog){
-			catalog[i]['show'] = true;
+			catalog[i]['show'] = show;
 			auxList.push(catalog[i]);
 		}
 	}
 	return auxList;
 }
-function createCatalogObject(data, type = REQUEST_CATALOG, user_filters = [], showNumber){
+function createCatalogObject(data, type = REQUEST_CATALOG, user_filters = [], columnNumber, rowNumber){
   let response = {};
+  const showNumber = columnNumber * rowNumber;
   //console.log('createCatalogObject', data);
+  //const customCatalog = data.catalog;
+  //const customCatalog = cleanShowCatalog(data.catalog);
   const customCatalog = editShowCatalog(showNumber, data.catalog);
   switch (type){
 		case REQUEST_CATALOG:
@@ -163,7 +166,11 @@ function createCatalogObject(data, type = REQUEST_CATALOG, user_filters = [], sh
 				excludes_active: [],
 				regions: data.region_filter,
 				regions_active: [],
-				show_load_more: (customCatalog.length > showNumber)
+				show_load_more: (customCatalog.length > showNumber),
+				loading: false,
+				columnNumber,
+				rowNumber,
+				rowLimitNumber: rowNumber, 
 			}
   }
   return response;
@@ -172,30 +179,27 @@ function createCatalogObject(data, type = REQUEST_CATALOG, user_filters = [], sh
 /*
  * Action Creators
  */
-export function requestCatalog(user_filters, showNumber) {
-  return(dispatch,getState)=>{
+//Create API request 
+export function requestCatalog(user_filters, columnNumber) {
+  return(dispatch, getState)=>{
 		let localApiCatalogURL = experiensa_vars.siteurl + '/wp-json/wp/v2/catalog';
 		axios.get(localApiCatalogURL, { timeout: 30000 })
 		.then((response)=>{
-			let catalogResponse;
+			let catalogResponse = getState().catalog;
 			console.log('response.data', response.data);
 			console.log('type of response.data', typeof response.data);
 			console.log('catalog in response.data', "catalog" in response.data);
-			if(response.data.length == 0){
-				catalogResponse = getState().catalog;
-			}else{
-				catalogResponse = createCatalogObject(response.data, REQUEST_CATALOG, user_filters, showNumber * 6);
+			if(response.data.length > 0){
+				catalogResponse = createCatalogObject(response.data, REQUEST_CATALOG, user_filters, columnNumber, catalogResponse.rowNumber);
 			}
 			console.log('catalogo formateado', catalogResponse);
-			dispatch(
-				{
-					type: REQUEST_CATALOG,
-					payload: catalogResponse
-				}
-			)
+			dispatch({
+				type: REQUEST_CATALOG,
+				payload: catalogResponse
+			});
 		})
 		.catch((error)=>{
-			console.log('Error',error)
+			console.log('Error',error);
 		});
   }
 }
@@ -276,6 +280,10 @@ export function filterCatalog(filterType, value, active, extra_values = []){
             input_text,
             price_values,
             show_load_more,
+            loading,
+            columnNumber,
+            rowNumber,
+            rowLimitNumber
         } = original_state;
         console.log('original', original_state)
         switch (filterType){
@@ -317,8 +325,11 @@ export function filterCatalog(filterType, value, active, extra_values = []){
 					&& regions_active.length < 1
 					&& price_values.length < 1
 					&& input_text.length < 1
-        ){
-					newCatalog = cleanShowCatalog(originalCatalog);
+        ){//TODO: colocar numero original de viajes visibles
+					newCatalog = cleanShowCatalog(originalCatalog, false);
+					showNumber = columnNumber * rowNumber;
+					rowLimitNumber = rowNumber;
+					newCatalog = editShowCatalog(showNumber, newCatalog);
         }else{
 					const myFilters = {
 						user_filters,
@@ -331,12 +342,18 @@ export function filterCatalog(filterType, value, active, extra_values = []){
 						regions: regions_active,
 						prices: price_values,
 						input: input_text,
-					}
+					};
 					console.log('voy a buscar con estos datos:');
 					console.log('originalCatalog', originalCatalog);
 					console.log('myFilters', myFilters);
 					newCatalog = searchCatalog(originalCatalog, myFilters);
-        }
+					if(!ld.isEqual(newCatalog, originalCatalog)){
+						newCatalog = cleanShowCatalog(newCatalog, false);
+						showNumber = columnNumber * rowNumber;
+						rowLimitNumber = rowNumber;
+						newCatalog = editShowCatalog(showNumber, newCatalog);
+					}
+        }        
         const catalogResponse = {
 					catalog: newCatalog,
 					originalCatalog,
@@ -357,12 +374,14 @@ export function filterCatalog(filterType, value, active, extra_values = []){
 					regions_active,
 					input_text,
 					show_load_more,
+					loading,
+					columnNumber,
+					rowNumber,
+					rowLimitNumber,
         }
-        dispatch(
-					{
+        dispatch({
 						type: FILTER_CATALOG,
 						payload: catalogResponse
-					}
-        )
+				});
     }    
 }

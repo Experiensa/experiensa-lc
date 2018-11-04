@@ -21,6 +21,10 @@ export const initialState = {
 	price_values: [],
 	input_text: '',
 	show_load_more: true,
+	loading: true,
+	colunmNumber: 0,
+	rowNumber: 6,
+	rowLimitNumber: 0,
 };
 
 const catalogReducer = (state = initialState, action) => {

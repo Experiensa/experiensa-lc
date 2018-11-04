@@ -14,7 +14,6 @@ class MainContainer extends React.Component {
   }
 
   render(){
-    console.log('mis props sonxxx', this.props);
     const { options, filters } = this.props;
     return (
       <div>

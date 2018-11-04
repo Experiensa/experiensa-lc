@@ -19,7 +19,7 @@ class FilterItem extends React.Component {
 		})
   }
   render() {
-		const { title, key, filters, originalName } = this.props;
+		const { title,key, filters, originalName, post_per_row } = this.props;
 		const { isActive } = this.state;
     let items = [];
     if(typeof filters !== 'undefined' && filters.hasOwnProperty(title)){
@@ -63,6 +63,7 @@ class FilterItem extends React.Component {
 							options={items} 
 							groupName={title} 
 							originalName={originalName}
+							post_per_row={post_per_row}
 						/>
 					</Accordion.Content>
 				</div>

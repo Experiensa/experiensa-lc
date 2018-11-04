@@ -7,6 +7,8 @@ import renderExtraCatalog from './modules/extracatalog';
 
 jQuery(document).ajaxSuccess(function(event, xhr, settings) {
 	const action = 'action=dslc-ajax-add-module';
+	console.log('ajaxSuccess');
+	console.log('settings.data', settings.data);
 	if (typeof settings.data !== 'undefined' && settings.data.indexOf(action) !== -1) {
 		if (settings.data.indexOf('dslc_module_id=Showcase_LC_Module') !== -1) {
 			renderShowcase();

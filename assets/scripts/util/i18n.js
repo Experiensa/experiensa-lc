@@ -30,6 +30,7 @@ i18next
           flyer: { label: 'Flyer' },
           download: { label: 'Download' },
           tour_operator: { label: 'Tour Operator' },
+          loading: { label: 'Loading'},
         },
       },
       es: {
@@ -53,6 +54,7 @@ i18next
           flyer: { label: 'Folleto' },
           download: { label: 'Descargar' },
           tour_operator: { label: 'Operador Turístico' },
+          loading: { label: 'Cargando'},
         },
       },
       fr: {
@@ -76,6 +78,7 @@ i18next
           flyer: { label: 'Prospectus' },
           download: { label: 'Télécharger' },
           tour_operator: { label: 'Voyagiste' },
+          loading: { label: 'Chargement'},
         },
       }
     },

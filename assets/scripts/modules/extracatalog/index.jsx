@@ -3,8 +3,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
-import { createBrowserHistory } from 'history'
-import { routerMiddleware, connectRouter } from 'connected-react-router'
+import { createBrowserHistory } from 'history';
+import { routerMiddleware, connectRouter } from 'connected-react-router';
 import App from './App';
 import rootReducer from './reducers';
 import thunk from 'redux-thunk';
@@ -12,10 +12,9 @@ import 'semantic-ui-css/semantic.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 //import 'tachyons/css/tachyons.css';
-
 require('es6-symbol/implement');
 
-const history = createBrowserHistory()
+const history = createBrowserHistory();
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middlewares = [ routerMiddleware(history), thunk ];
@@ -49,10 +48,10 @@ export default function renderExtraCatalog() {
 				let options = JSON.parse(extra_catalog_app.dataset.options);
 				let filters = JSON.parse(extra_catalog_app.dataset.filters);
 				render(
-				<Provider store={store}>
-					<App history={history} options={options} filters={filters} />
-				</Provider>,
-				extra_catalog_app,
+					<Provider store={store}>
+						<App history={history} options={options} filters={filters} />
+					</Provider>,
+					extra_catalog_app,
 				);
 			}
 		}

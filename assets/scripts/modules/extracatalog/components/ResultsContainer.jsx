@@ -8,14 +8,6 @@ const ld = _.noConflict();
 class ResultsContainer extends React.Component {
   constructor(){
     super();
-    this.state = {
-      loading: true
-    };
-  }
-  componentDidMount(){
-    this.setState({
-      loading: false
-    });
   }
   elementsToShow(){
     const { elements } = this.props
@@ -45,29 +37,16 @@ class ResultsContainer extends React.Component {
   }
   render() {
     const { options, voyages } = this.props;
-    const { loading } = this.state;
-    if( loading === false){
-      if(voyages.length > 0){
-        return(
-          <Card.Group className="stackable" itemsPerRow={parseInt(options.post_per_row)}>
-            {this.renderVoyageCards()}
-          </Card.Group>
-        );
-      }else{
-        return(
-          <div>
-            {i18n.t('page_not_found.label')}
-          </div>
-        );
-      }
+    if(voyages.length > 0){
+      return(
+        <Card.Group className="stackable" itemsPerRow={parseInt(options.post_per_row)}>
+          {this.renderVoyageCards()}
+        </Card.Group>
+      );
     }else{
-      return (
+      return(
         <div>
-          <Loader
-            active
-            inline='centered'
-            content='Loading'
-          />
+          {i18n.t('page_not_found.label')}
         </div>
       );
     }

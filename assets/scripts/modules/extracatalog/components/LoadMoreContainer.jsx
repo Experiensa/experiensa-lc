@@ -8,16 +8,17 @@ class LoadMoreContainer extends React.Component {
   constructor(){
     super();
   }
+  /*
   componentWillMount(){
     const { post_per_row } = this.props;
     this.props.initLoadMore(post_per_row, true);
-  }
+  }*/
   handleClick = (e) => {
     const { post_per_row } = this.props;
     console.log('voy a cargar mas viajes');
     this.props.initLoadMore(post_per_row * 4, false);
     e.preventDefault();
-}
+  }
   render() {
     const { show_load_more } = this.props;
     console.log('props de LoadMoreContainer', this.props);

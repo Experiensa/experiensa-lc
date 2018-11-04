@@ -6,6 +6,7 @@ import { Grid, Loader } from 'semantic-ui-react';
 import FiltersContainer from './FiltersContainer';
 import ResultsContainer from './ResultsContainer';
 import LoadMoreContainer from './LoadMoreContainer';
+import i18n from '../../../util/i18n';
 
 class Index extends React.Component {
   constructor(){
@@ -24,7 +25,8 @@ class Index extends React.Component {
       countries,
       regions,
       options, 
-      filters 
+      filters,
+      loading, 
     } = this.props;
     const { elements } = options;
     const values = {
@@ -36,17 +38,29 @@ class Index extends React.Component {
       countries,
       regions
     };
-    console.log('catalog.constructor ', catalog.constructor );
-    console.log('catalog.length ', catalog.length );
-    if (catalog.constructor === Array) {
+    if(!loading){
       return(
-        <Grid stackable columns={2} divided>
+        <Grid
+          stackable
+          columns={2} 
+          divided
+        >
           <Grid.Column width={4}>
-            <FiltersContainer filters={filters} values={values}/>
+            <FiltersContainer
+              filters={filters}
+              values={values}
+              post_per_row={options.post_per_row}
+            />
           </Grid.Column>
           <Grid.Column width={12}>
-            <ResultsContainer voyages={catalog} elements={elements} options={options}/>
-            <LoadMoreContainer post_per_row={options.post_per_row} />
+            <ResultsContainer
+              voyages={catalog}
+              elements={elements}
+              options={options}
+            />
+            <LoadMoreContainer
+              post_per_row={options.post_per_row}
+            />
           </Grid.Column>
         </Grid>
       );
@@ -56,7 +70,7 @@ class Index extends React.Component {
 				<Loader
 					active
 					inline='centered'
-					content='Loading'
+					content={i18n.t('loading.label')}
 				/>
 			</div>
     );
@@ -72,7 +86,8 @@ function mapStateToProps(state){
     themes, 
     destinations, 
     countries,
-    regions 
+    regions,
+    loading, 
   } = state.catalog;
   return {
       catalog,
@@ -82,7 +97,8 @@ function mapStateToProps(state){
       themes,
       destinations,
       countries,
-      regions
+      regions,
+      loading,
   }
 }
 

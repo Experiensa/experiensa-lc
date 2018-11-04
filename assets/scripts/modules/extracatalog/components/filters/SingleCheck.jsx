@@ -14,9 +14,10 @@ class SingleCheck extends Component {
     const { isActive } = this.state;
     this.setState({isActive: !isActive});
     const { checked, value } = data;
-    const { filterName } = this.props;
+    const { filterName, post_per_row } = this.props;
     let filterType = 'FILTER_' + filterName.toUpperCase();
-    console.log('voy a buscar', filterType, value, checked);
+    console.log('SingleCheck voy a buscar', filterType, value, checked);
+    console.log('SingleCheck post_per_row', post_per_row);
     this.props.filterCatalog(filterType, value, !isActive);
   }
   render() {

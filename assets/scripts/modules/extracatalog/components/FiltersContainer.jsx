@@ -5,40 +5,47 @@ import PriceFilter from './filters/PriceFilter';
 
 class FiltersContainer extends React.Component {
   constructor(){
-      super();
+    super();
   }
   renderFilterItems(){
-    const { filters, values } = this.props
+    const { filters, values, options, post_per_row } = this.props;
     return filters.map((f, i)=>{
       let filterName = f; 
       switch(f){
         case 'category':
-          filterName = 'categories'
+          filterName = 'categories';
           break;
         case 'country':
-          filterName = 'countries'
+          filterName = 'countries';
           break;
         case 'theme':
-          filterName = 'themes'
+          filterName = 'themes';
           break;
         case 'excluded':
-          filterName = 'excludes'
+          filterName = 'excludes';
           break;
         case 'included':
-          filterName = 'includes'
+          filterName = 'includes';
           break;
         case 'destination':
-          filterName = 'destinations'
+          filterName = 'destinations';
           break;
         case 'region':
-          filterName = 'regions'
+          filterName = 'regions';
           break;
         default:
-          filterName = f
+          filterName = f;
           break;
       }
       return(
-        <FilterItem key={ i } index={ i } title={ filterName } filters={ values } originalName={f}/>
+        <FilterItem
+          key={ i }
+          index={ i }
+          title={ filterName }
+          filters={ values }
+          originalName={f}
+          post_per_row={post_per_row}
+        />
       )
     })
   }
@@ -55,7 +62,8 @@ class FiltersContainer extends React.Component {
         defaultActiveIndex={defaults} 
         fluid 
         styled 
-        exclusive={false}>
+        exclusive={false}
+      >
         {this.renderFilterItems()}
         <PriceFilter 
           keyVal={defaults.length - 1}

@@ -13,7 +13,7 @@ const Routes = ({options, filters }) => {
         <Route path={voyageUrl} render={({ match })=><Voyage options={options} filters={filters} match={match} />}/>
       </Switch>
     </BrowserRouter>
-  )
+  );
 }
 
 export default Routes;
