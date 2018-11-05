@@ -37,7 +37,7 @@ class SingleCheck extends Component {
     )   
   }
 }
-function mapStateToProps(state){
-	return {isActive: false}
+function mapStateToProps(state) {
+	return { isActive: false };
 }
-export default connect(mapStateToProps,{filterCatalog})(SingleCheck);
+export default connect(mapStateToProps, { filterCatalog })(SingleCheck);

@@ -22,22 +22,29 @@ export const initialState = {
 	input_text: '',
 	show_load_more: true,
 	loading: true,
-	colunmNumber: 0,
+	columnNumber: 0,
 	rowNumber: 6,
 	rowLimitNumber: 0,
 };
 
 const catalogReducer = (state = initialState, action) => {
+	let newState;
 	switch (action.type) {
-		case REQUEST_CATALOG:
-			return Object.assign({},state,action.payload);
-		case FILTER_CATALOG:
-			return Object.assign({}, state, action.payload);
-		case EDIT_LOAD_MORE:
-			return Object.assign({}, state, action.payload);
-		default:
-			return state;
+	case REQUEST_CATALOG:
+		newState = Object.assign({}, state, action.payload);
+		break;
+	case FILTER_CATALOG:
+		newState = Object.assign({}, state, action.payload);
+		break;
+	case EDIT_LOAD_MORE:
+		newState = Object.assign({}, state, action.payload);
+		break;
+	default:
+		newState = Object.assign({}, state);
+		break;
 	}
-}
+	console.log('voy a retornar asi', newState);
+	return newState;
+};
 
 export default catalogReducer;
